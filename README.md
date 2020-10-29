@@ -42,21 +42,21 @@ Fabrizio Fornari| Superviser | <fabrizio.fornari@unicam.it> | N/A |
 
 
 
+
 ## For share and exchange files or notes  <a name="tools_sharing"/>
 
 
 
 ## For online meeting  <a name=" tools_meeting"/>
 
-
-
-
+### Google Meet <a name="tools_Google Meet"/>
+Google Meet is very useful for online calls/online meetings.  
+Download the [Google Meet(free)](https://meet.google.com/).
 
 ### For Bibliography <a name="tools_bibliography"/>
-
-
-
-
+For the management of the bibliography we use [Mendalay](https://www.mendeley.com/).  
+Download [Mendalay Desktop](https://www.mendeley.com/download-desktop-new/) for easy use on Windows.
+Install the [Browser Plugin](https://www.mendeley.com/reference-management/web-importer) for an easy import of articles.
 
 ### Software <a name="tools_software"/>
 For Software we can use:
@@ -68,9 +68,6 @@ For hardware we can use:
 - IoT devices which use different communication protocols (e.g. LoRa,MQTT, HTTP, etc.)
 - Deploy on Cloud and/or Edge
 - Different IoT devices
-
-
-
 
 ### Diagrams <a name="tools_diagrams"/>
 For diagrams and models are many tools on the market:
