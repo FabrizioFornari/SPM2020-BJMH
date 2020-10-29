@@ -39,6 +39,9 @@ Fabrizio Fornari| Superviser | <fabrizio.fornari@unicam.it> | N/A |
 
 
 
+
+
+
 ## For share and exchange files or notes  <a name="tools_sharing"/>
 
 
@@ -48,7 +51,23 @@ Fabrizio Fornari| Superviser | <fabrizio.fornari@unicam.it> | N/A |
 
 
 
+
 ### For Bibliography <a name="tools_bibliography"/>
+
+
+
+
+
+### Software <a name="tools_software"/>
+For Software we can use:
+- [Backend in Java]
+- [Git + GitHub as Version Control System]
+
+### Hardware <a name="tools_hardware"/>
+For hardware we can use:
+- [IoT devices which use different communication protocols (e.g. LoRa,MQTT, HTTP, etc.)]
+- [Deploy on Cloud and/or Edge]
+- [Different IoT devices]
 
 
 
