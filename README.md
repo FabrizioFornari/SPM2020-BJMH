@@ -18,10 +18,10 @@ The project is organized with the available tools of github. The [milestones](ht
 Who | Role | Email | Phone |
 ---- | ---- | ---- | --- |
 Bilel Braiek | Project Manager | <bilel.braiek@studenti.unicam.it> | +39 3342049842 |
-Miriam Petrocchi | | <miriam.petrocchi@studenti.unicam.it> |  |
- |  | <> | |
- |  | <> |  |
-| | <> | | 
+Miriam Petrocchi | Scrum Master| <miriam.petrocchi@studenti.unicam.it> |+39 3397084450  |
+ Jerusha Josine Manchala|  | <jerushajosi.manchala@studenti.unicam.it> | |
+ Haoran Sun|  | <haoran.sun@studenti.unicam.it> | +39 377848449 |
+
 
 ### UNICAM <a name="team_unicam"/>
 Who | Role | Email | Phone |
@@ -35,9 +35,20 @@ Fabrizio Fornari| Superviser | <fabrizio.fornari@unicam.it> | N/A |
 
 
 
+## For communication inside team  <a name=" tools_comunication"/>
 
 
-### Bibliography <a name="tools_bibliography"/>
+
+## For share and exchange files or notes  <a name="tools_sharing"/>
+
+
+
+## For online meeting  <a name=" tools_meeting"/>
+
+
+
+
+### For Bibliography <a name="tools_bibliography"/>
 
 
 
