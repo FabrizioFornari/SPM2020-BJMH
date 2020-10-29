@@ -34,17 +34,16 @@ Fabrizio Fornari| Superviser | <fabrizio.fornari@unicam.it> | N/A |
 ## Tools <a name="tools"/>
 
 
-
 ## For communication inside team  <a name=" tools_comunication"/>
-
-
-
-
-
-
+### Microsoft Teams  <a name=" tools_Microsoft Teams"/>
+Microsoft Teams is very useful for fast communication inside team.
+Download the [Microsoft Teams(free)](https://www.microsoft.com/it-it/microsoft-365/microsoft-teams/group-chat-software).
 
 ## For share and exchange files or notes  <a name="tools_sharing"/>
 
+### Google Drive <a name=" tools_Google Drive"/>
+Google Drive is very useful for sharing and exchanging files or notes.
+Download the [Google Drivet(free)](https://www.google.com/intl/it_it/drive/download/).
 
 
 ## For online meeting  <a name=" tools_meeting"/>
@@ -53,21 +52,25 @@ Fabrizio Fornari| Superviser | <fabrizio.fornari@unicam.it> | N/A |
 Google Meet is very useful for online calls/online meetings.  
 Download the [Google Meet(free)](https://meet.google.com/).
 
+
 ### For Bibliography <a name="tools_bibliography"/>
 For the management of the bibliography we use [Mendalay](https://www.mendeley.com/).  
 Download [Mendalay Desktop](https://www.mendeley.com/download-desktop-new/) for easy use on Windows.
 Install the [Browser Plugin](https://www.mendeley.com/reference-management/web-importer) for an easy import of articles.
+
 
 ### Software <a name="tools_software"/>
 For Software we can use:
 - Backend in Java
 - Git + GitHub as Version Control System
 
+
 ### Hardware <a name="tools_hardware"/>
 For hardware we can use:
 - IoT devices which use different communication protocols (e.g. LoRa,MQTT, HTTP, etc.)
 - Deploy on Cloud and/or Edge
 - Different IoT devices
+
 
 ### Diagrams <a name="tools_diagrams"/>
 For diagrams and models are many tools on the market:
