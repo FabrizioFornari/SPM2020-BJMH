@@ -17,7 +17,7 @@ The project is organized with the available tools of github. The [milestones](ht
 ### Team <a name="team"/>
 Who | Role | Email | Phone |
 ---- | ---- | ---- | --- |
-Bilel Braiek | Project Manager | <bilel.braiek@studenti.unicam.it> | +39 3342049842 |
+Bilel Braiek |  | <bilel.braiek@studenti.unicam.it> | +39 3342049842 |
 Miriam Petrocchi | Scrum Master| <miriam.petrocchi@studenti.unicam.it> |+39 3397084450  |
  Jerusha Josine Manchala|  | <jerushajosi.manchala@studenti.unicam.it> | |
  Haoran Sun|  | <haoran.sun@studenti.unicam.it> | +39 3778489449 |
