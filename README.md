@@ -10,8 +10,7 @@
    
     1. [LaTex](#tools_latex)
     2. [Bibliography](#tools_bibliography)
-   3. [Mindmap](#tools_mindmap)
-    4. [Diagrams](#tools_diagrams)
+    3. [Diagrams](#tools_diagrams)
 
   
   
