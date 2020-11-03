@@ -7,6 +7,12 @@
     2. [UNICAM](#team_unicam)
    
 3. [Tools](#tools)
+   
+    1. [LaTex](#tools_latex)
+    2. [Bibliography](#tools_bibliography)
+   3. [Mindmap](#tools_mindmap)
+    4. [Diagrams](#tools_diagrams)
+
   
   
 ## Introduction <a name="introduction"/>
@@ -51,6 +57,10 @@ Download the [Google Drivet(free)](https://www.google.com/intl/it_it/drive/downl
 ### Google Meet <a name="tools_Google Meet"/>
 Google Meet is very useful for online calls/online meetings.  
 Download the [Google Meet(free)](https://meet.google.com/).
+
+### LaTex <a name="tools_latex"/>
+LaTex is for document layout we use to write documents.  
+Download [MiKTeX (free)](https://miktex.org/download) to write LaTex documents and create PDF documents.
 
 
 ### For Bibliography <a name="tools_bibliography"/>
