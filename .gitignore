@@ -1,9 +1,0 @@
-# Package Files #
-*.war
-*.ear
-
-# IDEA config files
-.idea/
-
-# jar file
-*.jar
