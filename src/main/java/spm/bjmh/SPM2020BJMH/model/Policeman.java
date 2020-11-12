@@ -1,4 +1,4 @@
-package spm.bjmh.SPM2020BJMH.models;
+package spm.bjmh.SPM2020BJMH.model;
 
 import org.springframework.data.annotation.Id;
 

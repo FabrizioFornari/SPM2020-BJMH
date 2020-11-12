@@ -1,7 +1,13 @@
-package spm.bjmh.SPM2020BJMH.models;
+package spm.bjmh.SPM2020BJMH.model;
+
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+@Document
 public class DriverModel {
     @Id
     private String id;
@@ -11,6 +17,8 @@ public class DriverModel {
     private int phoneNumber;
     private String licensePlate;
     private Boolean handicap;
+    private Date creationDate = new Date();
+    private Map<String, String> driverSettings = new HashMap<>();
     //private Set<PaymentMethod> paymentMethod;
 
     public DriverModel() {}
@@ -71,5 +79,20 @@ public class DriverModel {
 
     public void setHandicap(Boolean handicap) {
         this.handicap = handicap;
+    }
+    public Date getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    public Map<String, String> getDriverSettings() {
+        return driverSettings;
+    }
+
+    public void setDriverSettings(Map<String, String> driverSettings) {
+        this.driverSettings = driverSettings;
     }
 }
