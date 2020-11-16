@@ -1,9 +1,15 @@
 package spm.bjmh.SPM2020BJMH.repository;
 
+import java.util.List;
+
 import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.stereotype.Repository;
 import spm.bjmh.SPM2020BJMH.model.DriverModel;
 
-@Repository
-public interface DriverRepository extends MongoRepository<DriverModel, String>{
+//interface including standard CRUD
+public class DriverRepository extends MongoRepository<DriverModel, String> {
+
+    //first test query
+    public DriverModel findByName(String name);
+    public List<DriverModel> findByLastName(String lastName);
 }
+
