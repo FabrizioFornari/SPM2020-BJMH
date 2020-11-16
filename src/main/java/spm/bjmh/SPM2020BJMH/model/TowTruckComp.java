@@ -5,36 +5,35 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
 
-@Document("DriverModel")
-public class DriverModel implements Serializable {
+@Document("TowTruckCompanyModel")
+public class TowTruckCompany implements Serializable {
     @Id
-    private String licenseNumber;
+    private String Name;
+    private String vatNumber;
     private String email;
-    private String name;
-    private String lastName;
     private String password;
     private int phoneNumber;
-    private Boolean disability;
+    
 
-    public DriverModel() {
+    public TowTruckCompanyModel() {
 
     }
 
-    public DriverModel(String email, String name, String lastName, String licenseNumber,String password, int phoneNumber, Boolean disability) {
-        this.email = email;
+    public TowTruckCompanyModel(String email, String password, int phoneNumber) {
+        
         this.name = name;
-        this.lastName = lastName;
-        this.licenseNumber = licenseNumber
+        this.email = email;
+        this.VATnumber = VATnumber;
         this.password = password;
         this.phoneNumber = phoneNumber;
-        this.disability = disability;
+        
     }
 
     @Override
     public String toString() {
         return String.format(
-                "Driver[licenseNumber=%s, firstName='%s', lastName='%s']",
-                licenseNumber, name, lastName);
+                "Company[VAT number=%s, Name='%s']",
+                vatnumber, name, );
     }
 
     public String getEmail() {
@@ -48,10 +47,7 @@ public class DriverModel implements Serializable {
     public String getLastName() {
         return lastName;
     }
-    public String getlicenceNumber() {
 
-        return licenseNumber;
-    }
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
@@ -64,12 +60,6 @@ public class DriverModel implements Serializable {
         return phoneNumber;
     }
 
-    public Boolean getDisability() {
-        return disability;
-    }
-
-    public void setDisability(Boolean disability) {
-        this.disability = disability;
     }
 
     public void setEmail(String email) {
@@ -87,7 +77,6 @@ public class DriverModel implements Serializable {
     public void setPhoneNumber(int phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-    public void setlicenseNumber(int licenseNumber) {
-        this.licenseNumber = licenseNumber;
-
+    public void set VatNumber(int VatNumber)     {
+        this.VatNumber = vatNumber;
 }
