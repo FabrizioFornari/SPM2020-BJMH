@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import spm.bjmh.SPM2020BJMH.model.DriverModel;
 
 //interface including standard CRUD
-public class DriverRepository extends MongoRepository<DriverModel, String> {
+public interface DriverRepository extends MongoRepository<DriverModel, String> {
 
     //first test query
     public DriverModel findByName(String name);
