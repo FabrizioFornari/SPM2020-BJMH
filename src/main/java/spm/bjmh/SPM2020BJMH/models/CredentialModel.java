@@ -1,4 +1,4 @@
-package spm.bjmh.SPM2020BJMH.model;
+package spm.bjmh.SPM2020BJMH.models;
 
 import java.io.Serializable;
 

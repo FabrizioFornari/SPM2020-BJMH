@@ -1,8 +1,8 @@
-package spm.bjmh.SPM2020BJMH.repository;
+package spm.bjmh.SPM2020BJMH.repositories;
 import java.util.List;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
-import spm.bjmh.SPM2020BJMH.model.Customer;
+import spm.bjmh.SPM2020BJMH.models.Customer;
 
 public interface CustomerRepository extends MongoRepository<Customer, String> {
 

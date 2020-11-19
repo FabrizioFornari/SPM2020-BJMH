@@ -1,13 +1,12 @@
-package spm.bjmh.SPM2020BJMH.model;
+package spm.bjmh.SPM2020BJMH.models;
  
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
-public class MunicipalityModel {
-    
-   @Document ("MunicipalityModel")
 
+    
+   @Document ("Municipalities")
   public class MunicipalityModel implements Serializable {
     /**
      *
@@ -72,9 +71,6 @@ public class MunicipalityModel {
 
 	public void setRegion(String region) {
 		this.region = region;
-	}
-
-	
 	}
 }
   

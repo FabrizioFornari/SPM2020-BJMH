@@ -1,39 +1,43 @@
-package spm.bjmh.SPM2020BJMH.model;
+package spm.bjmh.SPM2020BJMH.models;
+
+import java.io.Serializable;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.io.Serializable;
-
-@Document("TowTruckCompanyModel")
-public class TowTruckCompany implements Serializable {
+@Document("PolicemanModel")
+public class Policeman implements Serializable {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     @Id
-    private String Name;
-    private String vatNumber;
+    private String matriculaNumber;
     private String email;
+    private String name;
+    private String lastName;
     private String password;
     private int phoneNumber;
-    
 
-    public TowTruckCompanyModel() {
+    public Policeman() {
 
     }
 
-    public TowTruckCompanyModel(String email, String password, int phoneNumber) {
-        
-        this.name = name;
+    public Policeman(String email, String name, String lastName, String matriculaNumber, String password,
+            int phoneNumber, Boolean disability) {
         this.email = email;
-        this.VATnumber = VATnumber;
+        this.name = name;
+        this.lastName = lastName;
+        this.matriculaNumber = matriculaNumber;
         this.password = password;
         this.phoneNumber = phoneNumber;
-        
+
     }
 
     @Override
     public String toString() {
-        return String.format(
-                "Company[VAT number=%s, Name='%s']",
-                vatnumber, name, );
+        return String.format("Driver[licenseNumber=%s, firstName='%s', lastName='%s']", matriculaNumber, name,
+                lastName);
     }
 
     public String getEmail() {
@@ -48,6 +52,11 @@ public class TowTruckCompany implements Serializable {
         return lastName;
     }
 
+    public String getmatriculaNumber() {
+
+        return matriculaNumber;
+    }
+
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
@@ -58,8 +67,6 @@ public class TowTruckCompany implements Serializable {
 
     public int getPhoneNumber() {
         return phoneNumber;
-    }
-
     }
 
     public void setEmail(String email) {
@@ -77,6 +84,9 @@ public class TowTruckCompany implements Serializable {
     public void setPhoneNumber(int phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-    public void set VatNumber(int VatNumber)     {
-        this.VatNumber = vatNumber;
+
+    public void setlmatriculaNumber(String matriculaNumber) {
+        this.matriculaNumber = matriculaNumber;
+    }
+
 }
