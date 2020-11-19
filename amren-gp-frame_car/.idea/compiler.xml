@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="amren-common" />
+        <module name="amren-admin" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="admin" target="1.8" />
+      <module name="amren-admin" target="1.8" />
+      <module name="amren-common" target="1.8" />
+      <module name="amren-generator" target="1.8" />
+      <module name="amren-gp-frame" target="1.8" />
+      <module name="ruoyi-common" target="1.8" />
+      <module name="ruoyi-generator" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="admin" options="" />
+      <module name="amren-common" options="" />
+      <module name="amren-generator" options="" />
+      <module name="amren-gp-frame" options="" />
+    </option>
+  </component>
+</project>

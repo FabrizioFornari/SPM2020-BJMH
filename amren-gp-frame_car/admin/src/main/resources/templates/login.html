@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Login Smart Parking System</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <div th:include="common/ref::commonHeader"></div>
+</head>
+<script type="text/javascript" th:inline="javascript">
+    // 处理iframe页面session过期框架跳转登录页面
+    if (window != top) {
+        top.location.href = location.href;
+    }
+    //回车登录
+    $(document.documentElement).on("keyup", function (event) {
+        let keyCode = event.keyCode;
+        let qwe=$('#qwe').val();
+        if (keyCode === 13) {
+            if (qwe=="1"){
+                console.log("b2触发了");
+                $('#b2').trigger("click");
+            } else {
+                console.log("b1触发了");
+                $('#b1').trigger("click");
+            }
+            // userAuth();
+        }
+    });
+
+
+    //验证码刷新
+    function reloadImg(obj) {
+        let url = $(obj).attr('src');
+        $(obj).attr('src', url + '?' + Math.random());
+    }
+
+    //错误提示
+    function showErrMsg(element, msg) {
+        let obj = $('#' + element);
+        obj.text(msg);
+        obj.fadeIn('fast');
+        setTimeout(function () {
+            obj.fadeOut(1000, function () {
+                obj.text('');
+            });
+        }, 6000);
+    }
+
+    function doLogin(pwd) {
+        $("#password").val(pwd);
+        $("#ff").submit();
+    }
+
+    layui.use(['form', 'layer', 'laydate', 'table', 'laytpl', 'jquery'], function () {
+        let form = layui.form,
+            $ = layui.jquery,
+            popWindows;//定义弹窗变量
+
+        //登录方法
+        window.userAuth = function () {
+            $.post("/user/login",$("#ff").serialize(),function(data){
+                if(data.code == 1){
+                    window.location.href=data.url;
+                }else{
+                    layer.alert(data.message,function(){
+                        layer.closeAll();//关闭所有弹框
+                    });
+                }
+            });
+        }
+    })
+</script>
+<body class="loginBody">
+<form class="layui-form" id="ff" th:action="@{/doLogin}" method="post">
+    <div class="login_face"><img th:src="@{/img/face.jpg}" class="userAvatar"></div>
+    <div class="layui-form-item input-item">
+        <label for="userName">username</label>
+        <input name="username" type="text" placeholder="Please entry your username" autocomplete="off" id="userName" class="layui-input"
+               lay-verify="required">
+    </div>
+    <div class="layui-form-item input-item">
+        <label for="password">password</label>
+        <input type="password" placeholder="Please entry your password" autocomplete="off" name="password" id="password" class="layui-input"
+               lay-verify="required">
+    </div>
+    <!--<div class="layui-form-item input-item" id="imgCode">
+        <label for="code">验证码</label>
+        <input name="code" type="text" placeholder="请输入验证码" autocomplete="off" id="code" class="layui-input"
+               lay-verify="required">
+        <img id="codeImg" th:src="@{/auth/getValidateCode}" th:title="点击刷新" style="cursor:pointer;"
+             onclick="reloadImg(this)"/>
+    </div>-->
+    <div class="layui-form-item">
+        <button id="b1" class="layui-btn layui-block" lay-submit="" onclick="userAuth()" type="button">Login</button>
+    </div>
+</form>
+<input type="hidden"  id="qwe" value="0">
+<script type="text/javascript" th:src="@{/js/login.js}"></script>
+</body>
+</html>
