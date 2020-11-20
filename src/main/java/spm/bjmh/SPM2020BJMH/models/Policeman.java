@@ -1,4 +1,4 @@
-package spm.bjmh.SPM2020BJMH.model;
+package spm.bjmh.SPM2020BJMH.models;
 
 import java.io.Serializable;
 
@@ -6,7 +6,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document("PolicemanModel")
-public class PolicemanModel implements Serializable {
+public class Policeman implements Serializable {
     /**
      *
      */
@@ -19,12 +19,12 @@ public class PolicemanModel implements Serializable {
     private String password;
     private int phoneNumber;
 
-    public PolicemanModel() {
+    public Policeman() {
 
     }
 
-    public PolicemanModel(String email, String name, String lastName, String matriculaNumber, String password,
-            int phoneNumber) {
+    public Policeman(String email, String name, String lastName, String matriculaNumber, String password,
+            int phoneNumber, Boolean disability) {
         this.email = email;
         this.name = name;
         this.lastName = lastName;
@@ -36,7 +36,7 @@ public class PolicemanModel implements Serializable {
 
     @Override
     public String toString() {
-        return String.format("Policeman[matriculaNumber=%s, firstName='%s', lastName='%s']", matriculaNumber, name,
+        return String.format("Driver[licenseNumber=%s, firstName='%s', lastName='%s']", matriculaNumber, name,
                 lastName);
     }
 

@@ -1,43 +1,39 @@
-package spm.bjmh.SPM2020BJMH.model;
-
-import java.io.Serializable;
-
+package spm.bjmh.SPM2020BJMH.models;
+/*
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document("PolicemanModel")
-public class Policeman implements Serializable {
-    /**
-     *
-     */
-    private static final long serialVersionUID = 1L;
+import java.io.Serializable;
+
+@Document("TowTruckCompanyModel")
+public class TowTruckCompany implements Serializable {
     @Id
-    private String matriculaNumber;
+    private String Name;
+    private String vatNumber;
     private String email;
-    private String name;
-    private String lastName;
     private String password;
     private int phoneNumber;
+    
 
-    public Policeman() {
+    public TowTruckCompanyModel() {
 
     }
 
-    public Policeman(String email, String name, String lastName, String matriculaNumber, String password,
-            int phoneNumber, Boolean disability) {
-        this.email = email;
+    public TowTruckCompanyModel(String email, String password, int phoneNumber) {
+        
         this.name = name;
-        this.lastName = lastName;
-        this.matriculaNumber = matriculaNumber;
+        this.email = email;
+        this.VATnumber = VATnumber;
         this.password = password;
         this.phoneNumber = phoneNumber;
-
+        
     }
 
     @Override
     public String toString() {
-        return String.format("Driver[licenseNumber=%s, firstName='%s', lastName='%s']", matriculaNumber, name,
-                lastName);
+        return String.format(
+                "Company[VAT number=%s, Name='%s']",
+                vatnumber, name, );
     }
 
     public String getEmail() {
@@ -52,11 +48,6 @@ public class Policeman implements Serializable {
         return lastName;
     }
 
-    public String getmatriculaNumber() {
-
-        return matriculaNumber;
-    }
-
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
@@ -68,6 +59,7 @@ public class Policeman implements Serializable {
     public int getPhoneNumber() {
         return phoneNumber;
     }
+
 
     public void setEmail(String email) {
         this.email = email;
@@ -84,9 +76,7 @@ public class Policeman implements Serializable {
     public void setPhoneNumber(int phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-
-    public void setlmatriculaNumber(String matriculaNumber) {
-        this.matriculaNumber = matriculaNumber;
-    }
-
+    public void setVatNumber(int VatNumber)     {
+        this.VatNumber = vatNumber;
 }
+*/

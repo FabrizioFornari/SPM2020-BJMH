@@ -1,9 +1,10 @@
-package spm.bjmh.SPM2020BJMH.model;
+package spm.bjmh.SPM2020BJMH.models;
 
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-
+@Document(collection = "customers")
 public class Customer {
 
     @Id

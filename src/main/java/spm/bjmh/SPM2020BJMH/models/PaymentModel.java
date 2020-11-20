@@ -1,10 +1,6 @@
-package spm.bjmh.SPM2020BJMH.model;	
+package spm.bjmh.SPM2020BJMH.models;
 
-import org.springframework.data.annotation.Id;	
-import org.springframework.data.mongodb.core.mapping.Document;	
-
-import java.io.Serializable;	
-
+/*
 @Document("PaymentModel")	
 
 public class PaymentModel {
@@ -68,4 +64,4 @@ public class PaymentModel {
 		this.parking = parking;	
 	}	
 
-} 
+} */

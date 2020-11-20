@@ -4,10 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import spm.bjmh.SPM2020BJMH.model.Customer;
-import spm.bjmh.SPM2020BJMH.repository.CustomerRepository;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
+import spm.bjmh.SPM2020BJMH.models.Customer;
+import spm.bjmh.SPM2020BJMH.repositories.CustomerRepository;
 
 @SpringBootApplication
+@EnableMongoRepositories
 public class Spm2020BjmhApplication implements CommandLineRunner {
 
 	public static void main(String[] args) {
