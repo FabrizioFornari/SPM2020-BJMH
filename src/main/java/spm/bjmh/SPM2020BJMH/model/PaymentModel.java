@@ -7,7 +7,7 @@ import java.io.Serializable;
 
 @Document("PaymentModel")	
 
-public class Payment {	
+public class PaymentModel {
 
 
 	private String id;	
@@ -17,9 +17,9 @@ public class Payment {
 	private String parking;	
 
 
-	public Payment() { }	
+	public PaymentModel() { }
 
-	public Payment(String id, double price, long emission, long life, String parking) {	
+	public PaymentModel(String id, double price, long emission, long life, String parking) {
 		super();	
 		this.id = id;	
 		this.price = price;	
