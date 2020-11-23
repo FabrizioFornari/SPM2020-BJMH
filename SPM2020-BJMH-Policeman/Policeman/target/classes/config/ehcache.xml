@@ -1,0 +1,63 @@
+<ehcache>
+
+    <diskStore path="java.io.tmpdir"/>
+    <!-- name cache name -->
+    <!-- maxElementsInMemory The maximum number of cached objects in memory, look at your own heap size to do it -->
+    <!-- eternal: true means that the object will never expire, the timeToIdleSeconds and timeToLiveSeconds attributes will be ignored at this time, the default is false -->
+    <!-- maxElementsOnDisk: The maximum number of cached objects in the hard disk, if 0 means infinity -->
+    <!-- overflowToDisk: true means that when the number of objects cached in the memory reaches the maxElementsInMemory limit,
+    The overflowed objects will be written to the hard disk cache. Note: If the cached object is to be written to the hard disk, the object must implement the Serializable interface. -->
+    <!-- diskSpoolBufferSizeMB: Disk buffer size, the default is 30MB. Each Cache should have its own cache area. -->
+    <!-- diskPersistent: Whether to cache data during the restart period of the virtual machine -->
+    <!-- diskExpiryThreadIntervalSeconds: the running time interval of disk failure threads, the default is 120 seconds -->
+
+    <!--timeToIdleSeconds: Set the allowable idle time (unit: seconds) before the object becomes invalid. When the subject has been visited since the last time,
+    If the time in the idle state exceeds the value of the timeToIdleSeconds attribute, the object will expire.
+    EHCache will empty it from the cache. Only used when the eternal=false object is not permanently valid. Optional attribute. The default value is 0, that is, the idle time is infinite. -->
+
+    <!--timeToLiveSeconds: Set the allowable survival time (unit: seconds) before the object expires. The maximum time is between the creation time and the expiration time.
+    If the time in the cache exceeds the value of the timeToLiveSeconds attribute, the object will expire.
+    EHCache will clear it from the cache. Only used when eternal=false object is not permanently valid, the default is 0. That is, the object lifetime is infinite. -->
+    <!-- clearOnFlush: Whether to clear when the amount of memory is the largest -->
+    <!-- memoryStoreEvictionPolicy: When the maxElementsInMemory limit is reached,
+    Ehcache will clean up the memory according to the specified strategy. Optional strategies are: LRU (least recently used, default strategy),
+    FIFO (First In First Out), LFU (Least Access). -->
+    <defaultCache
+            maxElementsInMemory="10000"
+            timeToIdleSeconds="120"
+            timeToLiveSeconds="120"
+            maxElementsOnDisk="10000000"
+            diskExpiryThreadIntervalSeconds="120"
+            memoryStoreEvictionPolicy="LRU">
+        <!--<persistence strategy="localTempSwap"/>-->
+    </defaultCache>
+    <!-- Set the cache default data expiration strategy -->
+    <cache name="shiro"
+           maxElementsInMemory="10000"
+           timeToIdleSeconds="120"
+           timeToLiveSeconds="120"
+           maxElementsOnDisk="10000000"
+           diskExpiryThreadIntervalSeconds="120"
+           memoryStoreEvictionPolicy="LRU">
+       <!-- <persistence strategy="localTempSwap"/>-->
+    </cache>
+    <!-- shiro-activeSessionCache active user session caching strategy -->
+    <cache name="shiro-activeSessionCache"
+           maxElementsInMemory="10000"
+           timeToIdleSeconds="86400"
+           timeToLiveSeconds="86400"
+           maxElementsOnDisk="10000000"
+           diskExpiryThreadIntervalSeconds="120"
+           memoryStoreEvictionPolicy="LRU">
+        <!-- <persistence strategy="localTempSwap"/>-->
+    </cache>
+    <!-- Login record cache locked for 2 minutes -->
+    <cache name="passwordRetryCache"
+           maxEntriesLocalHeap="10000"
+           eternal="false"
+           timeToIdleSeconds="120"
+           timeToLiveSeconds="0"
+           overflowToDisk="false"
+           statistics="false">
+    </cache>
+</ehcache>

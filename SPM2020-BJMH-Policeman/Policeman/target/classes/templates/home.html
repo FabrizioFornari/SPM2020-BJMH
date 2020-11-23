@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <meta charset="UTF-8">
+    <title>Smart Parking Backstage management system</title>
+    <div th:include="common/ref::commonHeader"></div>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}" media="all"/>
+</head>
+<style type="text/css" th:inline="text">
+    body {
+        font-family: Consolas, "Microsoft YaHei UI";
+    }
+
+    .panel-body {
+        overflow: hidden;
+    }
+
+    .exit {
+        text-decoration: none;
+        background: url([[@{/img/power-off.png}]]) left center no-repeat;
+        padding-left: 17px;
+        color: #404080;
+    }
+
+    .password {
+        text-decoration: none;
+        color: #404080;
+    }
+
+    .tree-title {
+        width: 80%;
+    }
+
+    .btn-click {
+        width: 100%;
+        display: block;
+    }
+
+    div.panel-tool {
+        display: none;
+    }
+</style>
+<script type="text/javascript" th:inline="javascript">
+    var $, tab, dataStr, layer;
+    layui.config({
+        base: "js/"
+    }).extend({
+        "bodyTab": "bodyTab"
+    })
+    layui.use(['bodyTab', 'form', 'element', 'layer', 'jquery'], function () {
+        var form = layui.form,
+            element = layui.element,
+            popWindows;//Define popup variables
+        $ = layui.$;
+        layer = parent.layer === undefined ? layui.layer : top.layer;
+
+        tab = layui.bodyTab({
+            openTabNum: "50",  //Maximum number of open windows
+            url: "/permission/Menulist" //Get menu json address
+        });
+
+        //Get the second and third level menu on the left through the top menu
+        function getData() {
+            $.getJSON(tab.tabConfig.url, function (data) {
+                dataStr = data;
+                //Re-render the left menu
+                tab.render();
+            })
+        }
+
+        //Determine whether the left menu is displayed when the page loads
+        //Get the left menu through the top menu
+        $(".topLevelMenus li,.mobileTopLevelMenus dd").click(function () {
+            if ($(this).parents(".mobileTopLevelMenus").length != "0") {
+                $(".topLevelMenus li").eq($(this).index()).addClass("layui-this").siblings().removeClass("layui-this");
+            } else {
+                $(".mobileTopLevelMenus dd").eq($(this).index()).addClass("layui-this").siblings().removeClass("layui-this");
+            }
+            $(".layui-layout-admin").removeClass("showMenu");
+            $("body").addClass("site-mobile");
+            getData($(this).data("menu"));
+            //Render the top window
+            tab.tabMove();
+        })
+
+        // //Get the second and third level menu on the left through the top menu
+        getData();
+
+        // Add new window
+        $("body").on("click", ".layui-nav .layui-nav-item a:not('.mobileTopLevelMenus .layui-nav-item a')", function () {
+            //If there are no children
+            if ($(this).siblings().length == 0) {
+                addTab($(this));
+                $('body').removeClass('site-mobile');  //移动端点击菜单关闭菜单层
+            }
+            $(this).parent("li").siblings().removeClass("layui-nav-itemed");
+        })
+
+    })
+
+    //Open new window
+    function addTab(_this) {
+        tab.tabAdd(_this);
+    }
+
+    //sign out
+    function logout() {
+        $("#logout").submit();
+    }
+</script>
+<body class="main_body">
+<div style="display: none" id="first"></div>
+<div class="layui-layout layui-layout-admin">
+    <!-- 顶部 -->
+    <div class="layui-header header">
+        <div class="layui-main mag0">
+            <!--<td width="110px">
+                <img th:src="@{/img/logo.jpg}" style="height:45px;width:92px;margin:0px 7px;"/>
+            </td>-->
+            <td>
+                <span style="font-size: 22px; color: white; font-family: 'Microsoft YaHei UI Light'; margin: 10px">Smart Parking System</span>
+            </td>
+            <!-- 顶部右侧菜单 -->
+            <ul class="layui-nav top_menu">
+                <li class="layui-nav-item" id="userInfo">
+                    <a href="javascript:;"><img th:src="@{/img/face.jpg}" class="layui-nav-img userAvatar" width="35"
+                                                height="35"><cite class="">
+                        <shiro:principal property="sysUserName"></shiro:principal>
+                    </cite></a>
+                    <dl class="layui-nav-child">
+                        <form id="logout" method="post" th:action="@{/logout}">
+                            <dd><a href="javascript:void(0)" onclick="logout()" class="signOut"><i
+                                    class="seraph icon-tuichu"></i><cite>Logout</cite></a></dd>
+                        </form>
+                    </dl>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- 左侧导航 -->
+    <div class="layui-side layui-bg-black">
+        <div class="user-photo">
+            <a class="img" title="My icon"><img th:src="@{/img/face.jpg}" class="userAvatar"></a>
+            Hello! welcome-Policeman
+        </div>
+        <div class="navBar layui-side-scroll" id="navBar">
+            <ul class="layui-nav layui-nav-tree">
+                <li class="layui-nav-item layui-this">
+                    <a href="javascript:;" data-url="@{/main/main}"><i class="layui-icon"
+                                                                       data-icon=""></i><cite>Home</cite></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- 右侧内容 -->
+    <div class="layui-body layui-form">
+        <div class="layui-tab mag0" lay-filter="bodyTab" id="top_tabs_box">
+            <ul class="layui-tab-title top_tab" id="top_tabs">
+                <li class="layui-this" lay-id=""><i class="layui-icon">&#xe68e;</i> <cite>Background Home</cite></li>
+            </ul>
+            <ul class="layui-nav closeBox">
+                <li class="layui-nav-item">
+                    <a href="javascript:;"><i class="layui-icon caozuo">&#xe643;</i> Page operation</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="javascript:;" class="refresh refreshThis"><i class="layui-icon">&#x1002;</i>
+                            Refresh current</a></dd>
+                        <dd><a href="javascript:;" class="closePageOther"><i class="seraph icon-prohibit"></i> Close other</a>
+                        </dd>
+                        <dd><a href="javascript:;" class="closePageAll"><i class="seraph icon-guanbi"></i> Close all</a></dd>
+                    </dl>
+                </li>
+            </ul>
+            <div class="layui-tab-content clildFrame">
+                <div class="layui-tab-item layui-show">
+                    <iframe th:src="@{main/main}"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 底部 -->
+    <div class="layui-footer footer">
+        <p><span>@SPM2020-BJMH</span></p>
+    </div>
+</div>
+</body>
+</html>

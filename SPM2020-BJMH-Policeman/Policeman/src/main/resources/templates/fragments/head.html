@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org"
+       xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<body>
+<header th:fragment="header">
+    <div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+        <a href="javascript:;" class="layui-hide-xs"><a href="#" style="font-weight: bold;"><div class="layui-logo switchMenu fa fa-switch">停车管理系统</div></a>
+        </a>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="javascript:;">
+                    <img src="/images/logo.jpg" class="layui-nav-img"></img>
+                    <shiro:principal property="sysUserName"></shiro:principal>
+                </a>
+                <dl class="layui-nav-child">
+                </dl>
+            </li>
+            <li class="layui-nav-item"><a href="/logout">退出</a></li>
+        </ul>
+    </div>
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+                <!--<li class="layui-nav-item layui-nav-itemed">
+                    <a href="javascript:;">系统管理</a>
+                    <dl class="layui-nav-child">
+                        <dd><a href="/user/userManage">账号管理</a></dd>
+                        <dd><a href="/role/roleManage">角色管理</a></dd>
+                        <dd><a href="/permission/permissionManage">权限管理</a></dd>
+                    </dl>
+                </li>
+                -->
+            </ul>
+        </div>
+    </div>
+    </div>
+<script type="text/javascript" src="/js/head.js"></script>
+    <script>
+        //JavaScript代码区域
+        layui.use('element', function(){
+            var element = layui.element;
+
+        });
+        var isShow = true;  //定义一个标志位
+        $('.switchMenu').click(function(){
+            //选择出所有的span，并判断是不是hidden
+            $('.layui-nav-item span').each(function(){
+                if($(this).is(':hidden')){
+                    $(this).show();
+                }else{
+                    $(this).hide();
+                }
+            });
+            //判断isshow的状态
+            if(isShow){
+                $('.layui-side.layui-bg-black').width(60); //设置宽度
+                $('.switchMenu i').css('margin-right', '70%');  //修改图标的位置
+                //将footer和body的宽度修改
+                $('.layui-body').css('left', 60+'px');
+                $('.layui-footer').css('left', 60+'px');
+                //将二级导航栏隐藏
+                $('dd span').each(function(){
+                    $(this).hide();
+                });
+                //修改标志位
+                isShow =false;
+            }else{
+                $('.layui-side.layui-bg-black').width(200);
+                $('.switchMenu i').css('margin-right', '10%');
+                $('.layui-body').css('left', 200+'px');
+                $('.layui-footer').css('left', 200+'px');
+                $('dd span').each(function(){
+                    $(this).show();
+                });
+                isShow =true;
+            }
+        });
+
+    </script>
+</header>
+</body>
+</html>

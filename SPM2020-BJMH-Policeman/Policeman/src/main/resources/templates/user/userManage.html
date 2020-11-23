@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8">
+    <title>Smart Parking management system</title>
+    <div th:include="common/ref::commonHeader"></div>
+</head>
+<style type="text/css" th:inline="text">
+</style>
+
+<body class="childrenBody">
+
+<div class="layui-layout layui-layout-admin">
+
+    <form id="userSearch" class="layui-form layui-form-pane" method="post" action="" style="margin-top: 20px;">
+        <div class="layui-form-item">
+            <label class="layui-form-label">username</label>
+            <div class="layui-input-inline">
+                <input id="sysUserName" name="sysUserName" autocomplete="off" class="layui-input" type="text"/>
+            </div>
+            <label class="layui-form-label">phone number</label>
+            <div class="layui-input-inline">
+                <input id="userPhone" name="userPhone" autocomplete="off" class="layui-input" type="text"
+                       onkeyup="this.value=this.value.replace(/\D/g,'')"
+                       onafterpaste="this.value=this.value.replace(/\D/g,'')"/>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-inline">
+                <label class="layui-form-label">Registration time</label>
+                <div class="layui-input-inline" style="width: 175px;">
+                    <input name="startTime" id="startTime" placeholder="yyyy-MM-dd" autocomplete="off"
+                           class="layui-input" type="text"/>
+                </div>
+                <div class="layui-form-mid">-</div>
+                <div class="layui-input-inline" style="width: 175px;">
+                    <input name="endTime" id="endTime" placeholder="yyyy-MM-dd" autocomplete="off"
+                           class="layui-input" type="text"/>
+                </div>
+                <button type="reset" class="layui-btn layui-btn-primary">Reset</button>
+                <button class="layui-btn" lay-submit="" lay-filter="searchSubmit">submit</button>
+            </div>
+        </div>
+    </form>
+
+    <!--<hr class="layui-bg-blue"/>-->
+    <hr class="layui-bg-black"/>
+
+    <button class="layui-btn layui-btn-normal" onclick="addUser()">Activate users</button>
+
+    <div style="display:none;" id="currentUser">
+        <shiro:principal property="id"></shiro:principal>
+    </div>
+
+    <table id="uesrList" lay-filter="userTable"></table>
+
+    <script type="text/html" id="optBar">
+        <a class="layui-btn layui-btn-xs" lay-event="edit">edit</a>
+        {{#  if(d.userStatus == '0'){ }}
+        <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="recover">restore</a>
+        {{#  } else { }}
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">delete</a>
+        {{#  } }}
+    </script>
+
+
+    <!--添加或Edit用户-->
+    <div id="setUser" class="layer_self_wrap" style="width:500px;display:none;">
+        <form id="userForm" class="layui-form layui-form-pane" method="post" action="" style="margin-top: 20px;">
+            <input id="pageNum" type="hidden" name="pageNum"/>
+            <input id="id" type="hidden" name="id"/>
+            <div class="layui-form-item">
+                <label class="layui-form-label">username</label>
+                <div class="layui-input-inline">
+                    <input id="username" name="sysUserName" lay-verify="required" autocomplete="off" class="layui-input"
+                           type="text"/>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">Role type</label>
+                <div class="layui-input-inline">
+                    <select name="roleId" id="roleId">
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">phone number</label>
+                <div class="layui-input-inline">
+                    <input id="mobile" name="userPhone" lay-verify="required" autocomplete="off" class="layui-input"
+                           type="text" onkeyup="this.value=this.value.replace(/\D/g,'')"
+                           onafterpaste="this.value=this.value.replace(/\D/g,'')"/>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">password</label>
+                <div class="layui-input-inline">
+                    <input id="password" name="sysUserPwd" autocomplete="off" class="layui-input" type="password"
+                           placeholder="Default initial password：123456"/>
+                </div>
+                <div class="layui-form-mid layui-word-aux">Please fill in a password with more than 6 digits</div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-input-block" style="margin-left: 10px;">
+                    <button class="layui-btn" lay-submit="" lay-filter="userSubmit">submit</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">Reset</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!--bottom-->
+    <div th:replace="fragments/footer :: footer"></div>
+    <script src="/js/dateUtils.js"></script>
+    <script src="/js/sysUser/userList.js"></script>
+
+</div>
+</body>
+</html>

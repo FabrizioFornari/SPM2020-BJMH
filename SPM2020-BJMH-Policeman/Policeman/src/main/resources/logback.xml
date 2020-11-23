@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <property name="log.default_pattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS}|%-5level|%X{traceId}|%logger{1}|  %msg%n"/>
+    <property name="log.default_max_history" value="14"/>
+    <property name="log.default_charset" value="UTF-8"/>
+    <property name="log.home" value="/opt/logs/amrengp"/>
+
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender" level="debug">
+        <encoder>
+            <pattern>${log.default_pattern}</pattern>
+            <charset>${log.default_charset}</charset>
+        </encoder>
+    </appender>
+
+
+    <appender name="info" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.home}/info.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${log.home}/info.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>${log.default_max_history}</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${log.default_pattern}</pattern>
+            <charset>${log.default_charset}</charset>
+        </encoder>
+    </appender>
+
+    <appender name="error" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>WARN</level>
+        </filter>
+        <file>${log.home}/error.log</file>
+        <rollingPolicy  class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${log.home}/error.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>${log.default_max_history}</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${log.default_pattern}</pattern>
+            <charset>${log.default_charset}</charset>
+        </encoder>
+    </appender>
+
+    <!-- 数据库日志 -->
+    <appender name="db_info"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.home}/db_info.log</file>
+        <rollingPolicy
+                class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${log.home}/db_info.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>${log.default_max_history}</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${log.default_pattern}</pattern>
+            <charset>${log.default_charset}</charset>
+        </encoder>
+    </appender>
+
+    <!-- SQL相关日志输出-->
+    <logger name="com.amrengp.web.dao" level="debug" additivity="false">
+        <appender-ref ref="db_info"/>
+    </logger>
+
+    <root level="info">
+        <appender-ref ref="console"/>
+        <appender-ref ref="info"/>
+        <appender-ref ref="error"/>
+    </root>
+
+
+</configuration>
