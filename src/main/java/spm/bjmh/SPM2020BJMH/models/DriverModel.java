@@ -24,7 +24,6 @@ public class DriverModel implements Serializable {
     private Boolean disability;
 
     public DriverModel() {
-
     }
 
     public DriverModel(String email, String firstName, String lastName, String licensePlate, String password, int phoneNumber, Boolean disability) {

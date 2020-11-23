@@ -20,6 +20,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     MongoUserDetailsService userDetailsService;
 
+
     //  encoding and comparing password hashes
     @Bean
     public PasswordEncoder passwordEncoder() {
