@@ -27,8 +27,7 @@ public class DriverModel implements Serializable {
 
     }
 
-    public DriverModel(ObjectId id, String email, String firstName, String lastName, String licensePlate, String password, int phoneNumber, Boolean disability) {
-        this.id = id;
+    public DriverModel(String email, String firstName, String lastName, String licensePlate, String password, int phoneNumber, Boolean disability) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.licensePlate = licensePlate;

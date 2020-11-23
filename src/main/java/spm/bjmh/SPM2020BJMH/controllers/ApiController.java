@@ -9,7 +9,6 @@ import spm.bjmh.SPM2020BJMH.repositories.DriverRepository;
 @RestController
 @RequestMapping("/api")
 public class ApiController {
-    /*
     // create an instance of driverRepository for access and modify drivers in db
     @Autowired
     DriverRepository driverRepository;
@@ -25,7 +24,6 @@ public class ApiController {
     public void deleteDriver(@PathVariable ObjectId id) {
         driverRepository.delete(driverRepository.findBy_id(id));
     }
-    */
 }
 
 /*

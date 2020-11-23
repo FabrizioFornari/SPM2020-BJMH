@@ -39,11 +39,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 //Disables CSRF Protection because it is not needed for the API
                 .csrf().disable()
                 // Declares that all requests to any endpoint must be authorized, otherwise they must be rejected.
-                .authorizeRequests().anyRequest().authenticated()
+                .authorizeRequests().antMatchers("/").permitAll()
                 // so that it expects basic HTTP authentication
                 .and().httpBasic()
                 //  tells Spring not to store session information for users, as this is not necessary for the API
-                .and().sessionManagement().disable();
+                .and().sessionManagement().disable()
+                //form-based authentication is enabled with a custom login page and failure url
+                .formLogin().loginPage("/login").failureUrl("/login-error");
         /*
         http.cors().and().csrf().disable()
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()

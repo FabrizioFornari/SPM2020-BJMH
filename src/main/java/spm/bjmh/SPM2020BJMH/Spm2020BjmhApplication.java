@@ -10,17 +10,13 @@ import spm.bjmh.SPM2020BJMH.repositories.CustomerRepository;
 
 @SpringBootApplication
 @EnableMongoRepositories
-public class Spm2020BjmhApplication implements CommandLineRunner {
+public class Spm2020BjmhApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(Spm2020BjmhApplication.class, args);
 	}
-	@Autowired
-	private CustomerRepository repository;
 
-	@Override
-	public void run(String... args) throws Exception {
-
+/*
 		repository.deleteAll();
 
 		// save a couple of customers
@@ -46,6 +42,6 @@ public class Spm2020BjmhApplication implements CommandLineRunner {
 			System.out.println(customer);
 		}
 
-	}
+ */
 
 }

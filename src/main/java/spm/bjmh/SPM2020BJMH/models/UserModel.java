@@ -20,7 +20,6 @@ public class UserModel {
     @Id
     private String id;
     @Indexed(unique = true, direction = IndexDirection.DESCENDING, dropDups = true)
-
     @NotEmpty
     @Size(max = 50)
     private String email;
