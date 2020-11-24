@@ -11,7 +11,7 @@ $(function () {
         tableIns = table.render({
             elem: '#uesrList',
             url: '/excel/getExcelList',
-            text:'暂无数据',
+            text:'No data',
             method: 'post', //默认：get请求
             cellMinWidth: 80,
             height:'full-200',
@@ -69,9 +69,9 @@ $(function () {
                 console.log(curr);
                 $("[data-field='userStatus']").children().each(function () {
                     if ($(this).text() == '1') {
-                        $(this).text("有效")
+                        $(this).text("Valid")
                     } else if ($(this).text() == '0') {
-                        $(this).text("失效")
+                        $(this).text("Invalid")
                     }
                 });
                 //得到数据总量
@@ -140,7 +140,7 @@ function formSubmit(obj) {
             }
         },
         error: function () {
-            layer.alert("操作请求错误，请您稍后再试", function () {
+            layer.alert("Operation request error, please try again later", function () {
                 layer.closeAll();
                 //加载load方法
                 load(obj);//自定义
@@ -151,7 +151,7 @@ function formSubmit(obj) {
 
 //开通用户
 function addUser() {
-    openUser(null, "开通用户");
+    openUser(null, "Create new account");
 }
 
 function openUser(data, title) {
@@ -205,10 +205,10 @@ function delUser(obj, id, name) {
     var currentUser = $("#currentUser").html();
     if (null != id) {
         if (currentUser == id) {
-            layer.alert("对不起，您不能执行Delete自己的操作！");
+            layer.alert("Sorry, you cannot do the operate of delete yourself!");
         } else {
-            layer.confirm('您确定要Delete' + name + '用户吗？', {
-                btn: ['确认', '返回'] //按钮
+            layer.confirm('Do you want Delete' + name + 'account?', {
+                btn: ['Confirm', 'Back'] //按钮
             }, function () {
                 $.post("/user/updateUserStatus", {"id": id, "status": 0}, function (data) {
                     if (data.code == 1) {
@@ -230,8 +230,8 @@ function delUser(obj, id, name) {
 //恢复
 function recoverUser(obj, id) {
     if (null != id) {
-        layer.confirm('您确定要恢复吗？', {
-            btn: ['确认', '返回'] //按钮
+        layer.confirm('Do you want restore it？', {
+            btn: ['Comfirm', 'Back'] //按钮
         }, function () {
             $.post("/user/updateUserStatus", {"id": id, "status": 1}, function (data) {
                 if (data.code == 1) {

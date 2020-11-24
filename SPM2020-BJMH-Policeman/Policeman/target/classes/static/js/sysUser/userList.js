@@ -26,12 +26,12 @@ $(function() {
             },
             cols: [[
                 {type:'numbers'}
-                ,{field:'sysUserName', title:'用户名',align:'center'}
-                ,{field:'roleName', title:'角色类型',align:'center'}
-                ,{field:'userPhone', title:'手机号',align:'center'}
-                ,{field:'regTime', title: '注册时间',align:'center'}
-                ,{field:'userStatus', title: '是否有效',align:'center'}
-                ,{title:'操作',align:'center', toolbar:'#optBar'}
+                ,{field:'sysUserName', title:'Username',align:'center'}
+                ,{field:'roleName', title:'Role',align:'center'}
+                ,{field:'userPhone', title:'Phonenumber',align:'center'}
+                ,{field:'regTime', title: 'Registration time',align:'center'}
+                ,{field:'userStatus', title: 'Valid or not',align:'center'}
+                ,{title:'Operation',align:'center', toolbar:'#optBar'}
             ]],
             done: function(res, curr, count){
                 //如果是异步请求数据方式，res即为你接口返回的信息。
@@ -41,9 +41,9 @@ $(function() {
                 console.log(curr);
                 $("[data-field='userStatus']").children().each(function(){
                     if($(this).text()=='1'){
-                        $(this).text("有效")
+                        $(this).text("Valid")
                     }else if($(this).text()=='0'){
-                        $(this).text("失效")
+                        $(this).text("Invalid")
                     }
                 });
                 //得到数据总量
@@ -113,7 +113,7 @@ function formSubmit(obj){
             }
         },
         error: function () {
-            layer.alert("操作请求错误，请您稍后再试",function(){
+            layer.alert("Operation request error, please try again later",function(){
                 layer.closeAll();
                 //加载load方法
                 load(obj);//自定义
@@ -124,7 +124,7 @@ function formSubmit(obj){
 
 //开通用户
 function addUser(){
-    openUser(null,"开通用户");
+    openUser(null,"Create new account");
 }
 function openUser(data,title){
     var roleId = null;
@@ -177,10 +177,10 @@ function delUser(obj,id,name) {
     var currentUser=$("#currentUser").html();
     if(null!=id){
         if(currentUser==id){
-            layer.alert("对不起，您不能执行Delete自己的操作！");
+            layer.alert("Sorry, you cannot do the operation of delte yourself");
         }else{
-            layer.confirm('您确定要Delete'+name+'用户吗？', {
-                btn: ['确认','返回'] //按钮
+            layer.confirm('Do you want delete the account of'+name+'?', {
+                btn: ['Confirm','Back'] //按钮
             }, function(){
                 $.post("/user/updateUserStatus",{"id":id,"status":0},function(data){
                     if (data.code == 1) {

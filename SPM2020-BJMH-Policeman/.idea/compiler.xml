@@ -10,22 +10,16 @@
         <module name="SPM2020-BJMH-Policeman-Common" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="admin" target="1.8" />
-      <module name="amren-generator" target="1.8" />
-      <module name="Policeman" target="1.8" />
-      <module name="ruoyi-common" target="1.8" />
-      <module name="ruoyi-generator" target="1.8" />
-      <module name="SPM2020-BJMH-Policeman" target="1.8" />
-      <module name="SPM2020-BJMH-Policeman-Common" target="1.8" />
+    <bytecodeTargetLevel target="8">
+      <module name="Policeman" target="8" />
+      <module name="SPM2020-BJMH-Policeman" target="8" />
+      <module name="SPM2020-BJMH-Policeman-Common" target="8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="Policeman" options="" />
       <module name="SPM2020-BJMH-Policeman-Common" options="" />
-      <module name="admin" options="" />
-      <module name="amren-generator" options="" />
     </option>
   </component>
 </project>

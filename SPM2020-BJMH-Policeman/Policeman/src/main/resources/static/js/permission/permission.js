@@ -29,18 +29,18 @@ $(function() {
                 {type:'numbers'/*,width:"5%"*/}
                 /*,{field:'id', title:'id'}
                 ,{field:'parentId', title:'parentId'}*/
-                ,{field:'pname', title:'父级菜单',align:'center'/*,width:"10%"*/}
-                ,{field:'name', title:'菜单名称',align:'center'/*,width:"10%"*/}
-                ,{field:'descpt', title:'描述',align:'center'/*,width:"15%"*/}
-                ,{field:'url', title:'菜单url',align:'center'/*,width:"15%"*/}
-                ,{field:'createTime', title:'创建时间',align:'center'/*,width:"10%"*/}
-                ,{field:'updateTime', title:'更新时间',align:'center'/*,width:"10%"*/}
-                ,{fixed:'right',title:'操作',align:'center', toolbar:'#optBar'/*,width:"25%"*/}
+                ,{field:'pname', title:'Father menu',align:'center'/*,width:"10%"*/}
+                ,{field:'name', title:'name of menu',align:'center'/*,width:"10%"*/}
+                ,{field:'descpt', title:'description',align:'center'/*,width:"15%"*/}
+                ,{field:'url', title:'menu url',align:'center'/*,width:"15%"*/}
+                ,{field:'createTime', title:'create time',align:'center'/*,width:"10%"*/}
+                ,{field:'updateTime', title:'update time',align:'center'/*,width:"10%"*/}
+                ,{fixed:'right',title:'Operation',align:'center', toolbar:'#optBar'/*,width:"25%"*/}
             ]],
             done: function(res, curr, count){
                 $("[data-field='pname']").children().each(function(){
                     if($(this).text()==''){
-                        $(this).text("根目录");
+                        $(this).text("root directory");
                     }else {
                         $(this).text($(this).text());
                     }
@@ -90,7 +90,7 @@ function formSubmit(obj){
             }
         },
         error: function () {
-            layer.alert("操作请求错误，请您稍后再试",function(){
+            layer.alert("Operate request is error, please try again later",function(){
                 layer.closeAll();
                 load(obj);
             });
@@ -99,7 +99,7 @@ function formSubmit(obj){
 }
 //新增
 function add() {
-    edit(null,"新增");
+    edit(null,"Creating");
 }
 //打开Edit框
 function edit(data,title){
@@ -171,8 +171,8 @@ function load(obj){
 //Delete
 function del(obj,id) {
     if(null!=id){
-        layer.confirm('您确定要Delete吗？', {
-            btn: ['确认','返回'] //按钮
+        layer.confirm('Do you want delete it?', {
+            btn: ['Confirm','Back'] //按钮
         }, function(){
             $.post("/permission/del",{"id":id},function(data){
                 if (data.code == 1) {

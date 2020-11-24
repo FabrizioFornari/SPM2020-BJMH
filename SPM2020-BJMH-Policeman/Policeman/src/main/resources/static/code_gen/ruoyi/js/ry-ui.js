@@ -354,13 +354,13 @@ var table = {
     		// 导出数据
     		exportExcel: function(formId) {
     			table.set();
-    			$.modal.confirm("确定导出所有" + table.options.modalName + "吗？", function() {
+    			$.modal.confirm("Do you want export the User you choosed?" + table.options.modalName + "?", function() {
 	    			var currentId = $.common.isEmpty(formId) ? $('form').attr('id') : formId;
 	    			var params = $("#" + table.options.id).bootstrapTable('getOptions');
 	    			var dataParam = $("#" + currentId).serializeArray();
 	    			dataParam.push({ "name": "orderByColumn", "value": params.sortName });
 	    			dataParam.push({ "name": "isAsc", "value": params.sortOrder });
-	    			$.modal.loading("正在导出数据，请稍后...");
+	    			$.modal.loading("Please waiting...");
 	    			$.post(table.options.exportUrl, dataParam, function(result) {
 	    				if (result.code == web_status.SUCCESS) {
 	    			        window.location.href = ctx + "common/download?fileName=" + encodeURI(result.msg) + "&delete=" + true;
@@ -397,7 +397,7 @@ var table = {
             		//不固定
             		maxmin: true,
             		shade: 0.3,
-            		title: '导入' + table.options.modalName + '数据',
+            		title: 'Export' + table.options.modalName + 'data',
             		content: $('#' + currentId).html(),
             		btn: ['<i class="fa fa-check"></i> 导入', '<i class="fa fa-remove"></i> 取消'],
             		// 弹层外区域关闭
@@ -405,7 +405,7 @@ var table = {
             		btn1: function(index, layero){
             			var file = layero.find('#file').val();
             			if (file == '' || (!$.common.endWith(file, '.xls') && !$.common.endWith(file, '.xlsx'))){
-            				$.modal.msgWarning("请选择后缀为 “xls”或“xlsx”的文件。");
+            				$.modal.msgWarning("Please choose the files suffix is “xls”or“xlsx”");
             				return false;
             			}
             			var index = layer.load(2, {shade: false});

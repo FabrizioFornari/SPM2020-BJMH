@@ -39,13 +39,13 @@ $(function() {
             },
             cols: [[
                 {type:'numbers'}
-                ,{field:'roleName', title:'角色名称',align:'center'}
-                ,{field:'roleDesc', title:'角色描述',align:'center'}
-                ,{field:'permissions', title:'权限',align:'center'}
-                ,{field:'createTime', title:'创建时间',align:'center'}
-                ,{field:'updateTime', title:'更新时间',align:'center'}
-                ,{field:'roleStatus', title:'是否有效',align:'center'}
-                ,{fixed:'right',title:'操作',align:'center', toolbar:'#optBar'}
+                ,{field:'roleName', title:'Name',align:'center'}
+                ,{field:'roleDesc', title:'Role description',align:'center'}
+                ,{field:'permissions', title:'Authority',align:'center'}
+                ,{field:'createTime', title:'Create time',align:'center'}
+                ,{field:'updateTime', title:'update time',align:'center'}
+                ,{field:'roleStatus', title:'Valid or not',align:'center'}
+                ,{fixed:'right',title:'Operation',align:'center', toolbar:'#optBar'}
             ]],
             done: function(res, curr, count){
                 $("[data-field='roleStatus']").children().each(function(){
@@ -103,7 +103,7 @@ function formSubmit(obj){
             }
         },
         error: function () {
-            layer.alert("操作请求错误，请您稍后再试",function(){
+            layer.alert("Operation request error, please try again later",function(){
                 layer.closeAll();
                 load(obj);
             });
@@ -113,7 +113,7 @@ function formSubmit(obj){
 
 //新增
 function add() {
-    edit(null,"新增");
+    edit(null,"Add");
 }
 //打开Edit框
 function edit(data,title){
@@ -179,8 +179,8 @@ function load(obj){
 //Delete
 function delRole(obj,id) {
     if(null!=id){
-        layer.confirm('您确定要Delete吗？', {
-            btn: ['确认','返回'] //按钮
+        layer.confirm('Do you want delete it?', {
+            btn: ['Confirm','Back'] //按钮
         }, function(){
             $.post("/role/updateRoleStatus",{"id":id,"status":0},function(data){
                 if (data.code == 1) {
@@ -200,8 +200,8 @@ function delRole(obj,id) {
 //恢复
 function recoverRole(obj,id) {
     if(null!=id){
-        layer.confirm('您确定要恢复吗？', {
-            btn: ['确认','返回'] //按钮
+        layer.confirm('Do you want restore it?', {
+            btn: ['Confirm','Back'] //按钮
         }, function(){
             $.post("/role/updateRoleStatus",{"id":id,"status":1},function(data){
                 if (data.code == 1) {
