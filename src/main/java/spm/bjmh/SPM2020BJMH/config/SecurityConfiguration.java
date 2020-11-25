@@ -35,25 +35,34 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     // tells Spring Security how we configure CORS
     protected void configure(HttpSecurity http) throws Exception {
-        http
+        HttpSecurity disable = http
                 //Disables CSRF Protection because it is not needed for the API
                 .csrf().disable()
                 // Declares that all requests to any endpoint must be authorized, otherwise they must be rejected.
-                .authorizeRequests().anyRequest().authenticated()
+                .authorizeRequests()
+                .anyRequest().authenticated()
                 // so that it expects basic HTTP authentication
                 .and().httpBasic()
                 //  tells Spring not to store session information for users, as this is not necessary for the API
                 .and().sessionManagement().disable();
+                 antMatchers("/api/test/**","/register", "/register/driver" , "/register/policeman");
         /*
+
         http.cors().and().csrf().disable()
-                .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
+              .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-                .authorizeRequests().antMatchers("/api/auth/**").permitAll()
-                .antMatchers("/api/test/**").permitAll()
+                .authorizeRequests().
+                antMatchers()
+                antMatchers("/api/test/**");
+                .permitAll()
+                .permitAll()
                 .anyRequest().authenticated();
 
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
 
          */
+    }
+
+    private void antMatchers(String s, String s1, String s2, String s3) {
     }
 }
