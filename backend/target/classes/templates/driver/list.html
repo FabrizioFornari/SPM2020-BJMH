@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns = "http://www.w3.org/1999/xhtml"
+      xmlns:th = "http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>Driver</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+</head>
+<body>
+<h1>Driver list!</h1>
+
+<table class="table" id="driver-table">
+    <thead>
+    <tr>
+        <th>Driver Name</th>
+        <th>Driver lastname</th>
+        <th>Driver email</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="driver : ${drivers}">
+        <td><a th:text="${driver.firstName}" th:href="@{'/show/' + ${driver._id}}"></a></td>
+        <td th:text="${driver.lastName}"></td>
+        <td th:text="${driver.email}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+
+</html>

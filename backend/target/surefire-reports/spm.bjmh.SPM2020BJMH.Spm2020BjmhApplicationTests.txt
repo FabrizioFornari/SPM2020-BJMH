@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: spm.bjmh.SPM2020BJMH.Spm2020BjmhApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 9.98 s - in spm.bjmh.SPM2020BJMH.Spm2020BjmhApplicationTests
