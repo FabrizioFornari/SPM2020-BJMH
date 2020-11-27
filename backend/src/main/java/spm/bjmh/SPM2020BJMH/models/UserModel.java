@@ -1,6 +1,7 @@
 package spm.bjmh.SPM2020BJMH.models;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.index.IndexDirection;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
@@ -19,15 +20,22 @@ import java.util.Set;
 public class UserModel {
     @Id
     private String id;
+
     @Indexed(unique = true, direction = IndexDirection.DESCENDING, dropDups = true)
     @NotEmpty
     @Size(max = 50)
     private String email;
+
     @NotEmpty
     @Size(max = 120)
     private String password;
+
+    @Transient
+    private String passwordConfirm;
     private String username;
+
     private int phoneNumber;
+
     @DBRef
     private Set<RoleModel> roles;
 
@@ -58,6 +66,13 @@ public class UserModel {
         this.password = password;
     }
 
+    public String getPasswordConfirm() {
+        return passwordConfirm;
+    }
+
+    public void setPasswordConfirm(String passwordConfirm) {
+        this.passwordConfirm = passwordConfirm;
+    }
     public String getUsername() {
         return username;
     }

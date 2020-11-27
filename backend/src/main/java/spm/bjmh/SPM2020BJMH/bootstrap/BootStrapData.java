@@ -17,7 +17,7 @@ public class BootStrapData  implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         driverRepository.deleteAll();
-        DriverModel driver = new DriverModel("t", "t", "455678", "mi.pe@gmail.com", "6tyuunk", 345678, false);
+        DriverModel driver = new DriverModel("miriam.petrocchi@gmail.com", "Miriam", "Petrocchi", "EF345GR", "123456", "33255546675", false);
         driverRepository.save(driver);
 
 

@@ -2,7 +2,9 @@ package spm.bjmh.SPM2020BJMH.controllers;
 
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
 import spm.bjmh.SPM2020BJMH.models.DriverModel;
 import spm.bjmh.SPM2020BJMH.repositories.DriverRepository;
 
@@ -27,7 +29,7 @@ public class ApiController {
     }
     @PostMapping(value ="/register/driver")
     public DriverModel registerDriver(@RequestBody DriverModel driver) {
-        driver.set_id(ObjectId.get());
+        //driver.setId();
         driverRepository.save(driver);
         return driver;
     }
@@ -37,6 +39,7 @@ public class ApiController {
         driverRepository.delete(driverRepository.findBy_id(id));
     }
 }
+
 
 /*
  firstName;

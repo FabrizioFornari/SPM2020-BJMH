@@ -5,23 +5,20 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import spm.bjmh.SPM2020BJMH.models.DriverModel;
-import spm.bjmh.SPM2020BJMH.repositories.DriverRepository;
-
-
+import spm.bjmh.SPM2020BJMH.repositories.
 @Controller
 @RequestMapping("/driver")
-public class DriverController {
+public class PolicemanController {
 
-    private final DriverRepository driverRepository;
+    private final PolicemanRepository policemanRepository;
 
-    public DriverController(DriverRepository driverRepository) {
-        this.driverRepository = driverRepository;
+    public PolicemanController(PolicemanRepository policemanRepository) {
+        this.policemanRepository = policemanRepository;
     }
 
     @RequestMapping(value="", method = RequestMethod.GET)
     public String getDrivers(Model model) {
-        model.addAttribute("drivers", driverRepository.findAll());
+        model.addAttribute("drivers", policemanRepository.findAll());
         return "driver/list";
     }
 
@@ -42,9 +39,9 @@ public class DriverController {
         driver.setPhoneNumber(phoneNumber);
         driver.setDisability(disability);
 
-        driverRepository.save(driver);
+        policemanRepository.save(driver);
         return "driver/homepage";
-    // return "redirect:/show/" + driver.get_id();
+        // return "redirect:/show/" + driver.get_id();
     }
 
     @GetMapping("/login")
@@ -60,7 +57,7 @@ public class DriverController {
 
     @RequestMapping("/show/{id}")
     public String show(@PathVariable String id, Model model) {
-        model.addAttribute("driver", driverRepository.findById(id).get());
+        model.addAttribute("driver", policemanRepository.findById(id).get());
         return "driver/show";
     }
 }
