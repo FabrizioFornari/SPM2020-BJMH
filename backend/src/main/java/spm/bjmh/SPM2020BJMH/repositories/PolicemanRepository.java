@@ -8,10 +8,5 @@ import java.util.List;
 
 public interface PolicemanRepository extends MongoRepository<PolicemanModel, String> {
 
-//first test query
-public PolicemanModel findByFirstName(String firstName);
-public List<PolicemanModel> findByLastName(String lastName);
-
-
-    PolicemanModel findBy_id(ObjectId id);
+   //PolicemanModel findBy_id(ObjectId id);
 }

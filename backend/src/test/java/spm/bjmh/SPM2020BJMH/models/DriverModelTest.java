@@ -1,5 +1,5 @@
 package spm.bjmh.SPM2020BJMH.models;
-
+/*
 import org.junit.Before;
 import org.junit.Test;
 
@@ -49,3 +49,5 @@ public class DriverModelTest {
     public void getDisability() {
     }
 }
+
+ */

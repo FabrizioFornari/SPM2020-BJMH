@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Show</title>
+</head>
+<body>
+<div layout:fragment="content" class="row">
+    <div class="col-xs-8 col-md-8">
+        <h3>
+            <a href="/driver" class="btn btn-primary"><span class="glyphicon glyphicon-list"></span> Product</a>
+        </h3>
+        <h2 th:text="${driver.driverFirstName}"></h2>
+        <h2><img th:src="${driver.driverLastName}" width="200" /></h2>
+    </div>
+</div>
+</body>
+</html>

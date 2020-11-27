@@ -16,29 +16,27 @@ public class PolicemanModel implements Serializable {
     private ObjectId id;
     private String matriculaNumber;
     private String email;
-    private String name;
+    private String firstName;
     private String lastName;
     private String password;
-    private int phoneNumber;
+    private String phoneNumber;
 
     public PolicemanModel() {
-
     }
 
-    public PolicemanModel(String email, String name, String lastName, String matriculaNumber, String password,
-            int phoneNumber, Boolean disability) {
-        this.email = email;
-        this.name = name;
-        this.lastName = lastName;
+    public PolicemanModel(ObjectId id, String matriculaNumber, String email, String firstName, String lastName, String password, String phoneNumber) {
+        this.id = id;
         this.matriculaNumber = matriculaNumber;
+        this.email = email;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.password = password;
         this.phoneNumber = phoneNumber;
-
     }
 
     @Override
     public String toString() {
-        return String.format("Driver[licenseNumber=%s, firstName='%s', lastName='%s']", matriculaNumber, name,
+        return String.format("Driver[licenseNumber=%s, firstName='%s', lastName='%s']", matriculaNumber, firstName,
                 lastName);
     }
 
@@ -50,21 +48,32 @@ public class PolicemanModel implements Serializable {
         this.id = id;
     }
 
+    public String getMatriculaNumber() {
+        return matriculaNumber;
+    }
+
+    public void setMatriculaNumber(String matriculaNumber) {
+        this.matriculaNumber = matriculaNumber;
+    }
+
     public String getEmail() {
         return email;
     }
 
-    public String getName() {
-        return name;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getLastName() {
         return lastName;
-    }
-
-    public String getmatriculaNumber() {
-
-        return matriculaNumber;
     }
 
     public void setLastName(String lastName) {
@@ -75,28 +84,15 @@ public class PolicemanModel implements Serializable {
         return password;
     }
 
-    public int getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public void setPassword(String password) {
         this.password = password;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-
-    public void setlmatriculaNumber(String matriculaNumber) {
-        this.matriculaNumber = matriculaNumber;
-    }
-
 }

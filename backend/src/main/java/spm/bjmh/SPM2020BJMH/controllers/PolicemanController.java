@@ -21,7 +21,7 @@ public class PolicemanController {
     @RequestMapping(value="", method = RequestMethod.GET)
     public String getDrivers(Model model) {
         model.addAttribute("policemen", policemanRepository.findAll());
-        return "policemen/list";
+        return "policeman/list";
     }
 
     @RequestMapping("/create")
@@ -30,19 +30,18 @@ public class PolicemanController {
     }
 
     @RequestMapping("/save")
-    public String save(@RequestParam(required=false)Object id, @RequestParam String firstName, @RequestParam String lastName, @RequestParam String licensePlate, @RequestParam String email, @RequestParam String password, @RequestParam String phoneNumber, @RequestParam(required=false) Boolean disability) {
+    public String save(@RequestParam(required=false)Object id, @RequestParam String matricola, @RequestParam String firstName, @RequestParam String lastName, @RequestParam String email, @RequestParam String password, @RequestParam String phoneNumber) {
         PolicemanModel policeman = new PolicemanModel();
 
+        policeman.setMatriculaNumber(matricola);
         policeman.setFirstName(firstName);
         policeman.setLastName(lastName);
-        policeman.setLicensePlate(licensePlate);
         policeman.setEmail(email);
         policeman.setPassword(password);
         policeman.setPhoneNumber(phoneNumber);
-        policeman.setDisability(disability);
 
         policemanRepository.save(policeman);
-        return "driver/homepage";
+        return "policeman/homepage";
         // return "redirect:/show/" + driver.get_id();
     }
 
@@ -54,12 +53,12 @@ public class PolicemanController {
         if (logout != null)
             model.addAttribute("message", "You have been logged out successfully.");
 
-        return "driver/homepage";
+        return "policeman/homepage";
     }
 
     @RequestMapping("/show/{id}")
     public String show(@PathVariable String id, Model model) {
         model.addAttribute("driver", policemanRepository.findById(id).get());
-        return "driver/show";
+        return "policeman/show";
     }
 }
