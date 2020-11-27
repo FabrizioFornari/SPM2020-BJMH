@@ -2,6 +2,7 @@ package spm.bjmh.SPM2020BJMH.models;
 
 import java.io.Serializable;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -12,6 +13,7 @@ public class PolicemanModel implements Serializable {
      */
     private static final long serialVersionUID = 1L;
     @Id
+    private ObjectId id;
     private String matriculaNumber;
     private String email;
     private String name;
@@ -38,6 +40,14 @@ public class PolicemanModel implements Serializable {
     public String toString() {
         return String.format("Driver[licenseNumber=%s, firstName='%s', lastName='%s']", matriculaNumber, name,
                 lastName);
+    }
+
+    public ObjectId getId() {
+        return id;
+    }
+
+    public void setId(ObjectId id) {
+        this.id = id;
     }
 
     public String getEmail() {

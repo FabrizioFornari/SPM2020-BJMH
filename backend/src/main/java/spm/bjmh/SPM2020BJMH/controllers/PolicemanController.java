@@ -5,9 +5,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import spm.bjmh.SPM2020BJMH.models.CarModel;
 import spm.bjmh.SPM2020BJMH.models.PolicemanModel;
-import spm.bjmh.SPM2020BJMH.repositories.
+import spm.bjmh.SPM2020BJMH.repositories.PolicemanRepository;
+
 @Controller
 @RequestMapping("/policeman")
 public class PolicemanController {
@@ -20,13 +20,13 @@ public class PolicemanController {
 
     @RequestMapping(value="", method = RequestMethod.GET)
     public String getDrivers(Model model) {
-        model.addAttribute("drivers", policemanRepository.findAll());
-        return "driver/list";
+        model.addAttribute("policemen", policemanRepository.findAll());
+        return "policemen/list";
     }
 
     @RequestMapping("/create")
     public String create(Model model) {
-        return "driver/create";
+        return "policeman/create";
     }
 
     @RequestMapping("/save")
