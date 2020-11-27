@@ -5,9 +5,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import spm.bjmh.SPM2020BJMH.models.CarModel;
+import spm.bjmh.SPM2020BJMH.models.PolicemanModel;
 import spm.bjmh.SPM2020BJMH.repositories.
 @Controller
-@RequestMapping("/driver")
+@RequestMapping("/policeman")
 public class PolicemanController {
 
     private final PolicemanRepository policemanRepository;
@@ -29,17 +31,17 @@ public class PolicemanController {
 
     @RequestMapping("/save")
     public String save(@RequestParam(required=false)Object id, @RequestParam String firstName, @RequestParam String lastName, @RequestParam String licensePlate, @RequestParam String email, @RequestParam String password, @RequestParam String phoneNumber, @RequestParam(required=false) Boolean disability) {
-        DriverModel driver = new DriverModel();
+        PolicemanModel policeman = new PolicemanModel();
 
-        driver.setFirstName(firstName);
-        driver.setLastName(lastName);
-        driver.setLicensePlate(licensePlate);
-        driver.setEmail(email);
-        driver.setPassword(password);
-        driver.setPhoneNumber(phoneNumber);
-        driver.setDisability(disability);
+        policeman.setFirstName(firstName);
+        policeman.setLastName(lastName);
+        policeman.setLicensePlate(licensePlate);
+        policeman.setEmail(email);
+        policeman.setPassword(password);
+        policeman.setPhoneNumber(phoneNumber);
+        policeman.setDisability(disability);
 
-        policemanRepository.save(driver);
+        policemanRepository.save(policeman);
         return "driver/homepage";
         // return "redirect:/show/" + driver.get_id();
     }

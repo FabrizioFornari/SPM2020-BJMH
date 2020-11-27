@@ -5,8 +5,8 @@ import java.io.Serializable;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document("PolicemanModel")
-public class Policeman implements Serializable {
+@Document("Policeman")
+public class PolicemanModel implements Serializable {
     /**
      *
      */
@@ -19,11 +19,11 @@ public class Policeman implements Serializable {
     private String password;
     private int phoneNumber;
 
-    public Policeman() {
+    public PolicemanModel() {
 
     }
 
-    public Policeman(String email, String name, String lastName, String matriculaNumber, String password,
+    public PolicemanModel(String email, String name, String lastName, String matriculaNumber, String password,
             int phoneNumber, Boolean disability) {
         this.email = email;
         this.name = name;
