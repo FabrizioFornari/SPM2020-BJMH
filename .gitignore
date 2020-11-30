@@ -47,7 +47,7 @@ build/
 src/main/frontend/node_modules
 src/main/frontend/.pnp
 src/main/frontend/.pnp.js
-src/main/frontend/
+
 src/main/frontend/# testing
 src/main/frontend/coverage
 
