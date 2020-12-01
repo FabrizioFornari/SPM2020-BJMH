@@ -1,9 +1,51 @@
 package spm.bjmh.SPM2020BJMH.models;
 
-import spm.bjmh.SPM2020BJMH.Enum.Roles;
+public class Admin {
 
-public class Admin extends User {
-    public Admin(String firstname, String lastname, String email, String phone, String username, String password, Roles role) {
-        super(firstname, lastname, email, phone, username, password, Roles.ROLE_ADMIN);
+    private String firstname;
+    private String lastname;
+    private String phone;
+    private String email;
+
+
+        // Constructor//
+
+    public Admin() {
+
+    }
+
+      // Accessory Methods//
+
+
+     String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
