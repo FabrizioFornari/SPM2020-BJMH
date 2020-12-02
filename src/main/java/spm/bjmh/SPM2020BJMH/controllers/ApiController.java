@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.*;
 import spm.bjmh.SPM2020BJMH.models.DriverModel;
 import spm.bjmh.SPM2020BJMH.repositories.DriverRepository;
 
+import java.util.UUID;
+
 @RestController
 @RequestMapping("/api")
 public class ApiController {
@@ -15,14 +17,14 @@ public class ApiController {
 
     @PostMapping(value ="/register/driver")
     public DriverModel registerDriver(@RequestBody DriverModel driver) {
-        driver.set_id(ObjectId.get());
+        driver.setId(UUID.randomUUID());
         driverRepository.save(driver);
         return driver;
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public void deleteDriver(@PathVariable ObjectId id) {
-        driverRepository.delete(driverRepository.findBy_id(id));
+    public void deleteDriver(@PathVariable UUID id) {
+        driverRepository.delete(driverRepository.findById(id));
     }
 }
 

@@ -5,13 +5,13 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 @Document(collection = "driver")
 public class DriverModel implements Serializable {
 
-    private static final long serialVersionUID = 1L;
     @Id
-    private ObjectId id;
+    private UUID id;
 
     private String firstName;
     private String lastName;
@@ -27,6 +27,7 @@ public class DriverModel implements Serializable {
     }
 
     public DriverModel(String email, String firstName, String lastName, String licensePlate, String password, int phoneNumber, Boolean disability) {
+        this.id = UUID.randomUUID();
         this.firstName = firstName;
         this.lastName = lastName;
         this.licensePlate = licensePlate;
@@ -44,8 +45,13 @@ public class DriverModel implements Serializable {
                 '}';
     }
 
-    public String get_id() { return id.toHexString(); }
-    public void set_id(ObjectId _id) { this.id = _id; }
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
 
     public String getFirstName() {
         return firstName;

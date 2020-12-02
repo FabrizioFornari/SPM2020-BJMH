@@ -1,6 +1,7 @@
 package spm.bjmh.SPM2020BJMH.repositories;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.repository.MongoRepository;
@@ -17,6 +18,6 @@ public interface DriverRepository extends MongoRepository<DriverModel, String> {
     public List<DriverModel> findByLastName(String lastName);
 
 
-    DriverModel findBy_id(ObjectId id);
+    DriverModel findById(UUID id);
 }
 
