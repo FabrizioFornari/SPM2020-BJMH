@@ -1,109 +1,32 @@
 package spm.bjmh.SPM2020BJMH.models;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import org.hibernate.validator.constraints.NotEmpty;
+import spm.bjmh.SPM2020BJMH.Enum.Roles;
 
-import java.io.Serializable;
+import javax.validation.constraints.NotNull;
 
-@Document(collection = "driver")
-public class Driver implements Serializable {
+public class Driver extends User{
 
-    @Id
-    private String id;
+    @NotNull(message = "Plate must not be null")
+    @NotEmpty(message = "Plate must not be empty")
+    private  String plate;
 
-    private String firstName;
-    private String lastName;
-    private String licensePlate;
 
-    private String email;
-    private String password;
 
-    private int phoneNumber;
-    private Boolean disability;
-
-    public Driver() {
+    public Driver(String firstname, String lastname, String email, String phone, String username, String password, String plate) {
+        super(firstname, lastname, email, phone, username, password, Roles.ROLE_DRIVER);
+        this.plate= plate;
+    }
+    public String getPlate() {
+        return plate;
     }
 
-    public Driver(String id, String email, String firstName, String lastName, String licensePlate, String password, int phoneNumber, Boolean disability) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.licensePlate = licensePlate;
-        this.email = email;
-        this.password = password;
-        this.phoneNumber = phoneNumber;
-        this.disability = disability;
-    }
-
-    @Override
-    public String toString() {
-        return "Driver{" +
-                ", firstName='" + firstName + '\'' +
-                ", licensePlate=" + licensePlate +
-                '}';
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getLicensePlate() {
-        return licensePlate;
-    }
-
-    public void setLicensePlate(String licensePlate) {
-        this.licensePlate = licensePlate;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public int getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(int phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public Boolean getDisability() {
-        return disability;
-    }
-
-    public void setDisability(Boolean disability) {
-        this.disability = disability;
+    public void setPlate(String plate) {
+        this.plate = plate;
     }
 }
+
+
+
+
+

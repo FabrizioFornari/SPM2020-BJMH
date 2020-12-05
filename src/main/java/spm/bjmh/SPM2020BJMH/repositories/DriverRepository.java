@@ -7,8 +7,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 import spm.bjmh.SPM2020BJMH.models.Driver;
 
-//interface including standard CRUD - connection between model and mongoDB
-//@RepositoryRestResource()
+
 @Repository
 public interface DriverRepository extends MongoRepository<Driver, String> {
 

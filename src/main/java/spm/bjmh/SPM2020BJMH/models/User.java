@@ -1,45 +1,74 @@
 package spm.bjmh.SPM2020BJMH.models;
 
+import org.hibernate.validator.constraints.Length;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.index.IndexDirection;
-import org.springframework.data.mongodb.core.index.Indexed;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+import spm.bjmh.SPM2020BJMH.Enum.Roles;
 
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
-import java.util.Set;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import java.io.Serializable;
 
-/*
-@NotNull: a constrained CharSequence, Collection, Map, or Array is valid as long as it's not null, but it can be empty
-@NotEmpty: a constrained CharSequence, Collection, Map, or Array is valid as long as it's not null and its size/length is greater than zero
-@NotBlank: a constrained String is valid as long as it's not null and the trimmed length is greater than zero
- */
-@Document("user")
-public class User {
+
+@Document("UserModels")
+public class User implements Serializable {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+
     @Id
-    private String id;
-    @Indexed(unique = true, direction = IndexDirection.DESCENDING, dropDups = true)
-    @NotEmpty
-    @Size(max = 50)
+    @NotNull(message = " First name must be not null")
+    @NotEmpty(message =" First name must be not empty")
+    private String firstname;
+    @NotNull(message = "Last name must not be null")
+    @NotEmpty(message = "Last name must be not empty")
+    private String lastname;
+    @NotNull(message = "Email must be not null ")
+    @NotEmpty(message = "Email must be not empty")
     private String email;
-    @NotEmpty
-    @Size(max = 120)
-    private String password;
+    private String phone;
+    @NotNull(message = "Username must not be null ")
+    @NotEmpty(message = "Username must not be empty")
     private String username;
-    private int phoneNumber;
-    @DBRef
-    private Set<RoleModel> roles;
+    @NotNull(message = "Password must not be null")
+    @NotEmpty(message = "Password must not be empty")
+    @Length(min = 6, message ="Password must be at least 6 characters" )
+    private String password;
+    private Roles role;
 
-    public User() {
+    public  User (String firstname, String lastname, String email, String phone, String username, String password,
+                              Roles role){
+        this.firstname= firstname;
+    this.lastname= lastname;
+    this.email= email;
+    this.phone= phone;
+    this.username= username;
+    this.password= password;
+    this.role= role;
+
     }
 
-    public String getId() {
-        return id;
+
+
+    /*ACCESSORY METHODS  */
+
+
+    public String getFirstname() {
+        return firstname;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
     public String getEmail() {
@@ -50,12 +79,12 @@ public class User {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getUsername() {
@@ -66,19 +95,20 @@ public class User {
         this.username = username;
     }
 
-    public int getPhoneNumber() {
-        return phoneNumber;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public Set<RoleModel> getRoles() {
-        return roles;
+    public Roles getRole() {
+        return role;
     }
 
-    public void setRoles(Set<RoleModel> roles) {
-        this.roles = roles;
+    public void setRole(Roles role) {
+        this.role = role;
     }
 }
+

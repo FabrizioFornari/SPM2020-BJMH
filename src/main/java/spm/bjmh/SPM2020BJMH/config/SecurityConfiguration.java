@@ -36,7 +36,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     // tells Spring Security how we configure CORS
     protected void configure(HttpSecurity http) throws Exception {
-        http
+        HttpSecurity disable = http
                 //Disables CSRF Protection because it is not needed for the API
                 .csrf().disable()
                 // Declares that all requests to any endpoint must be authorized, otherwise they must be rejected.
@@ -48,6 +48,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 //form-based authentication is enabled with a custom login page and failure url
                 .formLogin().loginPage("/login").failureUrl("/login-error");
 
+    }
+
+    private void antMatchers(String s, String s1, String s2, String s3) {
     }
 }
 
