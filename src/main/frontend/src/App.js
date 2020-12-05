@@ -1,46 +1,32 @@
+import React from 'react';
+import {Button} from 'antd';
+import 'antd/dist/antd.css';
 import logo from './logo.svg';
 import './App.css';
-import React, {useState, useEffect} from 'react';
-import UserBuilder from './components/UserBuilder/UserBuilder'
-import axios from 'axios'; 
-
-import Layout from './components/Layout/Layout'
-
-const server = "http://localhost:8080/api";
-
-/*
-const ServerApi = () => {
-  const [serverApi, setServerApi] =useState([]);
-
-  const fetchServerApi = () => {
-    axios.get(server).then(res =>{
-      console.log(res)
-      setServerApi(res.data)
-    });
-  };
-*/
-
-/*
-  useEffect(() => {
-    fetchServerApi();
-  }, []);
-
-  return serverApi.map((serverApi) => {
-    return(
-      <div><h1>{serverApi}</h1></div>
-    )
-  })
-}
-*/
-
+import {Switch, Route, Redirect} from 'react-router-dom'
+import { adminRoute } from './routes/routesfile';
+import Frame from './components/Frame/index.js'
 
 function App() {
   return (
-   <div className = "App">
-     <Layout>
-       <UserBuilder />
-     </Layout>
-   </div>
+    <Frame>
+      <Switch>
+        {adminRoute.map(route =>{
+          return(
+            <Route
+            key={route.path}
+            path={route.path}
+            exact={route.exact}
+            render={routeProps =>{
+              return <route.component{...routeProps}/>;
+            }}
+            />
+          );
+        })}
+        <Redirect to="/404"/>
+
+      </Switch>
+    </Frame>
   );
 }
 
