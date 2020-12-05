@@ -1,9 +1,8 @@
 package spm.bjmh.SPM2020BJMH.controllers;
 
-import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import spm.bjmh.SPM2020BJMH.models.DriverModel;
+import spm.bjmh.SPM2020BJMH.models.Driver;
 import spm.bjmh.SPM2020BJMH.repositories.DriverRepository;
 
 import java.util.UUID;
@@ -16,8 +15,7 @@ public class ApiController {
     DriverRepository driverRepository;
 
     @PostMapping(value ="/register/driver")
-    public DriverModel registerDriver(@RequestBody DriverModel driver) {
-        driver.setId(UUID.randomUUID());
+    public Driver registerDriver(@RequestBody Driver driver) {
         driverRepository.save(driver);
         return driver;
     }

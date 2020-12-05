@@ -16,7 +16,7 @@ import java.util.Set;
 @NotBlank: a constrained String is valid as long as it's not null and the trimmed length is greater than zero
  */
 @Document("user")
-public class UserModel {
+public class User {
     @Id
     private String id;
     @Indexed(unique = true, direction = IndexDirection.DESCENDING, dropDups = true)
@@ -31,7 +31,7 @@ public class UserModel {
     @DBRef
     private Set<RoleModel> roles;
 
-    public UserModel() {
+    public User() {
     }
 
     public String getId() {

@@ -1,5 +1,5 @@
 package spm.bjmh.SPM2020BJMH.config;
-
+/*
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -47,16 +47,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and().sessionManagement().disable()
                 //form-based authentication is enabled with a custom login page and failure url
                 .formLogin().loginPage("/login").failureUrl("/login-error");
-        /*
-        http.cors().and().csrf().disable()
-                .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-                .authorizeRequests().antMatchers("/api/auth/**").permitAll()
-                .antMatchers("/api/test/**").permitAll()
-                .anyRequest().authenticated();
 
-        http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
-
-         */
     }
 }
+
+ */

@@ -1,13 +1,13 @@
 package spm.bjmh.SPM2020BJMH.repositories;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
-import spm.bjmh.SPM2020BJMH.models.UserModel;
+import spm.bjmh.SPM2020BJMH.models.User;
 
-public interface UserRepository extends MongoRepository<UserModel, String> {
+public interface UserRepository extends MongoRepository<User, String> {
     // find a user by email
-    UserModel findByEmail(String email);
+    User findByEmail(String email);
 
-    UserModel findByUsername(String username);
+    User findByUsername(String username);
     // check the exist of an user
-    UserModel existsByEmail(String email);
+    User existsByEmail(String email);
 }

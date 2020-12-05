@@ -1,17 +1,15 @@
 package spm.bjmh.SPM2020BJMH.models;
 
-import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
-import java.util.UUID;
 
 @Document(collection = "driver")
-public class DriverModel implements Serializable {
+public class Driver implements Serializable {
 
     @Id
-    private UUID id;
+    private String id;
 
     private String firstName;
     private String lastName;
@@ -23,11 +21,11 @@ public class DriverModel implements Serializable {
     private int phoneNumber;
     private Boolean disability;
 
-    public DriverModel() {
+    public Driver() {
     }
 
-    public DriverModel(String email, String firstName, String lastName, String licensePlate, String password, int phoneNumber, Boolean disability) {
-        this.id = UUID.randomUUID();
+    public Driver(String id, String email, String firstName, String lastName, String licensePlate, String password, int phoneNumber, Boolean disability) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.licensePlate = licensePlate;
@@ -45,11 +43,11 @@ public class DriverModel implements Serializable {
                 '}';
     }
 
-    public UUID getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(String id) {
         this.id = id;
     }
 
