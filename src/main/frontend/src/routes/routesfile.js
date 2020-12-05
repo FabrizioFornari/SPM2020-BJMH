@@ -1,9 +1,9 @@
 import List from "../page/admin/products/List";
-// import Index from "../page/admin/dashboard/mainboard";
 import Edit from "../page/admin/products/Edit";
 import Login from "../page/Login";
 import PageNotFound from "../page/PageNotFound";
 import mainboard from "../page/admin/dashboard/mainboard";
+import { AreaChartOutlined  } from '@ant-design/icons';
 //import Index from "../pages/admin/dashboard/mainboard";
 
 export const mainRoutes = [
@@ -23,6 +23,7 @@ export const adminRoutes = [
         component: mainboard,
         isShow: true,
         title: "Dashboard",
+        icon: "area-chart"
 },
 {
     path: "/admin/products",

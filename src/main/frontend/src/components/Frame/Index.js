@@ -4,14 +4,15 @@ import {
   Layout,
   Menu,
   Breadcrumb,
-  Icon,
   Dropdown,
   Avatar,
   message,
-  Badge 
+  Badge, 
+  Button
 } from 'antd';
+import { AreaChartOutlined  } from '@ant-design/icons';
 //import { connect } from "react-redux";
-import { UserOutlined, LaptopOutlined, NotificationOutlined } from '@ant-design/icons';
+//import { UserOutlined, LaptopOutlined, NotificationOutlined } from '@ant-design/icons';
 import logo from './parkinglogo.png';
 import { adminRoutes } from "../../routes/routesfile";
 // import { adminRoutes } from "../../routes/routesfile.js"
@@ -44,12 +45,22 @@ function Index(props) {
               defaultOpenKeys={['sub1']}
               style={{ height: '100%', borderRight: 0 }}
             >
+              
+
+
+              
                 {routes.map(route =>{
                     return (
                     <Menu.Item 
                     key={route.path}>
+                      <icon type={route.icon}/>
+                      
+                      {/* <Icon type={route.icon}/> */}
+                      {/* <AreaChartOutlined /> */}
+    
                         {route.title}
                     </Menu.Item>
+                    
                     );
                 })}
               {/* <SubMenu key="sub1" icon={<UserOutlined />} title="subnav 1">
