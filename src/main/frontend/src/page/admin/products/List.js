@@ -3,6 +3,8 @@ import React from 'react';
 import { Card, Table, Button, Popconfirm } from 'antd'
 import renderEmpty from 'antd/lib/config-provider/renderEmpty';
 
+
+
 const dataSource = [{
     id: 1,
     PlateNumber: 'Ay757',
@@ -26,7 +28,7 @@ const dataSource = [{
 
 }]
 
-function List() {
+function List(props) {
     const columns = [{
         title: 'Number',
         key: 'id',
@@ -62,10 +64,10 @@ function List() {
             return (
                 <div>
                     <Button style={{ margin: "0 1rem" }} type="primary" size="small">Edit</Button>
-                    <Popconfirm 
-                    title="Do you want delete it?" 
-                    onCancel={() => console.log('Cancel Delete')} 
-                    onConfirm={() => console.log('Confirm Delete')}
+                    <Popconfirm
+                        title="Do you want delete it?"
+                        onCancel={() => console.log('Cancel Delete')}
+                        onConfirm={() => console.log('Confirm Delete')}
                     // Call Api here for related operations
                     >
                         <Button style={{ margin: "0 1rem" }} type="danger" size="small">Delete</Button>
@@ -78,7 +80,11 @@ function List() {
         <Card
             title="Parking List"
             extra={
-                <Button type="primary" size="small">
+                <Button 
+                type="primary"
+                size="small"
+                onClick={() => props.history.push("/admin/products/Edit")}
+                >
                     Add
                 </Button>
             }

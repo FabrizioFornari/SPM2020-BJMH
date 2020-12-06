@@ -33,7 +33,7 @@ export const adminRoutes = [
 
 },
 {
-    path: "/admin/products/edit/:id",
+    path: "/admin/products/edit/:id?",
     isShow:false,
     component: Edit
 }];
