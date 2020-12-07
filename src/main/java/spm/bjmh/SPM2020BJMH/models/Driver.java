@@ -1,6 +1,7 @@
 package spm.bjmh.SPM2020BJMH.models;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import spm.bjmh.SPM2020BJMH.Constants.RegexConstants;
 import spm.bjmh.SPM2020BJMH.Enum.Roles;
 
 import javax.validation.constraints.NotNull;
@@ -22,9 +23,18 @@ public class Driver extends User{
     }
 
     public void setPlate(String plate) {
-        this.plate = plate;
+        if(plate != null && plate != "" &&
+                plate.matches(RegexConstants.PLATE_REGEX)) {
+            this.plate = plate;
+        }
+        else {
+            throw new IllegalArgumentException("Plate is invalid");
+
+        }
     }
-}
+
+
+    }
 
 
 
