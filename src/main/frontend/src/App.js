@@ -6,9 +6,10 @@ import './App.css';
 import {Switch, Route, Redirect} from 'react-router-dom'
 import { adminRoutes } from './routes/routesfile';
 import Frame from './components/Frame/Index.js'
+import { isLogined } from './utils/auth'
 
 function App() {
-  return (
+  return  isLogined()? (
     <Frame>
       <Switch>
         {adminRoutes.map(route =>{
@@ -28,7 +29,9 @@ function App() {
 
       </Switch>
     </Frame>
-  );
-}
+    ): (
+      <Redirect to="/login" />
+    );
+  }
 
 export default App;

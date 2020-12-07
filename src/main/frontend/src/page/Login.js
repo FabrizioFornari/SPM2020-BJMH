@@ -1,5 +1,6 @@
 import React from 'react';
 import { Form, Icon, Input, Button, Checkbox, Card } from 'antd';
+import { setToken } from "../utils/auth";
 import './login.css'
 import FormItem from 'antd/lib/form/FormItem';
 
@@ -10,6 +11,8 @@ function Login(props) {
             props.form.validateFields((err, values) => {
               if (!err) {
                 console.log('Received values of form: ', values);
+                setToken(values.username);
+                props.history.push('/admin');
               }
             });
         

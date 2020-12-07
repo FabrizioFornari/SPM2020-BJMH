@@ -89,7 +89,7 @@ function List(props) {
                 </Button>
             }
         >
-            <Table columns={columns} bordered dataSource={dataSource} />
+            <Table rowKey="id" columns={columns} bordered dataSource={dataSource} />
         </Card>
     )
 }
