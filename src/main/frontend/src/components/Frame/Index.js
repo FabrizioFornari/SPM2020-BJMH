@@ -8,27 +8,55 @@ import {
   Avatar,
   message,
   Badge,
-  Button
+  Button,
+  Icon,
 } from 'antd';
 import { AreaChartOutlined } from '@ant-design/icons';
 //import { connect } from "react-redux";
 //import { UserOutlined, LaptopOutlined, NotificationOutlined } from '@ant-design/icons';
 import logo from './parkinglogo.png';
 import { adminRoutes } from "../../routes/routesfile";
+import './frame.css'
+import { clearToken } from '../../utils/auth'
 // import { adminRoutes } from "../../routes/routesfile.js"
+
+
 const routes = adminRoutes.filter(route => route.isShow)
+
+
 
 const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
 
 function Index(props) {
+
+  const popMenu = (<Menu onClick={(p)=>{
+    if(p.key=='logout'){
+      clearToken();
+      props.history.push()
+    }else{
+      message.info(p.key);
+    }
+  }}>
+    <Menu.Item key="notice">Notice</Menu.Item>
+    <Menu.Item key="setting">Setting</Menu.Item>
+    <Menu.Item key="logout">Logout</Menu.Item>
+  </Menu>)
+
   return (
     <Layout>
       <Header className="header">
         <div className="logo" >
           <img src={logo} alt="logo" />
-
         </div>
+
+        <Dropdown overlay={popMenu}>
+          <div>
+            <Avatar>U</Avatar>
+            <span>Super admin</span>
+            <Icon type="dwon" />
+          </div>
+        </Dropdown>
 
 
         {/* <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
