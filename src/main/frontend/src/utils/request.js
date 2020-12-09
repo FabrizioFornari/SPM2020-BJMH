@@ -2,9 +2,9 @@ import axios from 'axios';
 import { getToken } from "./auth";
 
 const instance = axios.create({
-    baseURL:'http://localhost:3000',
+    baseURL:"http://localhost:3009",
     timeout:5000
-})
+});
 
 
 // Add a request interceptor
@@ -43,7 +43,7 @@ instance.interceptors.request.use(
  * @param {*} params  url paramster
  */
 export function get(url, params){
-    return axios.get(url, {
+    return instance.get(url, {
         params
     })
 }
@@ -54,7 +54,7 @@ export function get(url, params){
  * @param {*} data request data
  */
 export function post(url, data){
-    return axios.post(url, data)
+    return instance.post(url, data)
 }
 
 /**
@@ -63,13 +63,13 @@ export function post(url, data){
  * @param {*} data  data
  */
 export function put(url, data){
-    return axios.put(url, data)
+    return instance.put(url, data)
 }
 
 /**
  * del request
- * @param {} url request url 
+ * @param {*} url request url 
  */
 export function del(url){
-    return axios.delete(url)
+    return instance.delete(url)
 }

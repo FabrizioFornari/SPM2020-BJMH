@@ -1,6 +1,7 @@
 import { formatCountdown } from 'antd/lib/statistic/utils'
-import React from 'react';
-import { Card, Table, Button, Popconfirm } from 'antd'
+import React, { useEffect, useState } from 'react';
+import { Card, Table, Button, Popconfirm } from 'antd';
+import {listApi } from "../../../servives/information"
 import renderEmpty from 'antd/lib/config-provider/renderEmpty';
 
 
@@ -29,9 +30,18 @@ const dataSource = [{
 }]
 
 function List(props) {
+
+const [dataSource, setDataSource] = useState([])
+
+useEffect(() => {
+    listApi().then(res => {
+        console.log(res.products)
+    });
+}, []);
+
     const columns = [{
         title: 'Number',
-        key: 'id',
+        key: '_id',
         align: 'center',
         render: (txt, record, index) => index + 1
     }, {
@@ -89,7 +99,7 @@ function List(props) {
                 </Button>
             }
         >
-            <Table rowKey="id" columns={columns} bordered dataSource={dataSource} />
+            <Table rowKey="_id" columns={columns} bordered dataSource={dataSource} />
         </Card>
     )
 }

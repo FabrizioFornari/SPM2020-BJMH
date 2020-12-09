@@ -1,7 +1,7 @@
 import { get, post, put, del } from "../utils/request";
 
 /**
- * 获取列表
+ * get list
  * @param {*} page
  */
 export function listApi(page = 1) {
@@ -9,7 +9,7 @@ export function listApi(page = 1) {
 }
 
 /**
- * 创建数据
+ * create the  data
  * @param {*} data
  */
 export function createApi(data) {
@@ -17,7 +17,7 @@ export function createApi(data) {
 }
 
 /**
- * 根据id获取获取数据
+ * get the data dependent id
  * @param {*} id
  */
 export function getOneById(id) {
@@ -25,7 +25,7 @@ export function getOneById(id) {
 }
 
 /**
- * 修改记录
+ * modify history
  * @param {*} id
  * @param {*} data
  */
@@ -34,7 +34,7 @@ export function modifyOne(id, data) {
 }
 
 /**
- * 删除记录
+ * delete the record
  * @param {*} id
  * @param {*} data
  */

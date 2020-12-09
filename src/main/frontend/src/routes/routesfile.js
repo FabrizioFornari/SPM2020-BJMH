@@ -1,5 +1,5 @@
-import List from "../page/admin/products/List";
-import Edit from "../page/admin/products/Edit";
+import List from "../page/admin/information/List";
+import Edit from "../page/admin/information/Edit";
 import Login from "../page/Login";
 import PageNotFound from "../page/PageNotFound";
 import mainboard from "../page/admin/dashboard/mainboard";
