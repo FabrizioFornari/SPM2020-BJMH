@@ -11,6 +11,7 @@ import javax.validation.constraints.Pattern;
 import java.io.Serializable;
 
 
+
 @Document("UserModels")
 public class User implements Serializable {
     /**
