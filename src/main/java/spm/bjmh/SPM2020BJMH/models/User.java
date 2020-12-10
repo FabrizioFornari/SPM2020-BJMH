@@ -3,12 +3,8 @@ package spm.bjmh.SPM2020BJMH.models;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-<<<<<<< HEAD
 import spm.bjmh.SPM2020BJMH.Constants.RegexConstants;
-=======
->>>>>>> us-2-frontend
 import spm.bjmh.SPM2020BJMH.Enum.Roles;
-
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -31,7 +27,7 @@ public class User implements Serializable {
     private String lastname;
     @NotNull(message = "Email must be not null ")
     @NotEmpty(message = "Email must be not empty")
-<<<<<<< HEAD
+
     @Pattern(regexp=RegexConstants.EMAIL_REGEX, message="Invalid Email format")
     private String email;
     @NotNull(message="Phone must not be null")
@@ -43,12 +39,12 @@ public class User implements Serializable {
     @NotNull(message="Email must not be null")
     @NotEmpty(message = "Email must not be empty")
     @Pattern(regexp=RegexConstants.USERNAME_REGEX, message="Invalid Username format")
-=======
+
     private String email;
     private String phone;
     @NotNull(message = "Username must not be null ")
     @NotEmpty(message = "Username must not be empty")
->>>>>>> us-2-frontend
+
     private String username;
     @NotNull(message = "Password must not be null")
     @NotEmpty(message = "Password must not be empty")
@@ -73,7 +69,6 @@ public class User implements Serializable {
     /*ACCESSORY METHODS  */
 
 
-<<<<<<< HEAD
     public String getPassword() {
         return password;
     }
@@ -93,7 +88,7 @@ public class User implements Serializable {
         this.role = role;
     }
 
-=======
+
     public String getFirstname() {
         return firstname;
     }
@@ -109,12 +104,12 @@ public class User implements Serializable {
     public void setLastname(String lastname) {
         this.lastname = lastname;
     }
->>>>>>> us-2-frontend
+
 
     public String getEmail() {
         return email;
     }
-<<<<<<< HEAD
+
     public void setEmail(String email) {
         if(email != null && email != "" &&
                 email.matches(RegexConstants.EMAIL_REGEX)) {
@@ -137,18 +132,17 @@ public class User implements Serializable {
 
 
 
-=======
 
-    public void setEmail(String email) {
+
+     public void setEmail(String email) {
         this.email = email;
     }
 
->>>>>>> us-2-frontend
     public String getPhone() {
         return phone;
     }
 
-<<<<<<< HEAD
+
 
     public void setPhone(String phone) {
         if(phone != null && phone != "" &&
@@ -207,7 +201,7 @@ public class User implements Serializable {
 
 
 }
-=======
+
     public void setPhone(String phone) {
         this.phone = phone;
     }
@@ -237,4 +231,4 @@ public class User implements Serializable {
     }
 }
 
->>>>>>> us-2-frontend
+
