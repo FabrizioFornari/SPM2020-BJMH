@@ -18,6 +18,10 @@ ReactDOM.render(
       {mainRoutes.map(route => {
         return <Route key={route.path} path={route.path} component={route.component} />
       })}
+<<<<<<< HEAD
+=======
+      <Redirect to="/admin" from="/" />
+>>>>>>> us-2-frontend
       <Redirect to="/404" />
     </Switch>,
      </Router>,
