@@ -27,11 +27,11 @@ export class MapContainer extends Component {
     }
     
   handleChange = address => {
-    this.state({ address });
+    this.setState({ address });
   };
  
   handleSelect = address => {
-    this.state({ address });
+    this.setState({ address });
      geocodeByAddress(address)
       .then(results => getLatLng(results[0]))
       .then(latLng => {
