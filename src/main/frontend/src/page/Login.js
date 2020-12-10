@@ -10,33 +10,33 @@ function Login(props) {
   const handleSubmit = e => {
     e.preventDefault();
     props.form.validateFields((err, values) => {
-      // if (!err) {
-      //   console.log("Received values of form:", values);
-      //   setToken(values.username);
-      //   props.history.push('/admin');
-      // }
       if (!err) {
-        console.log('Received values of form: ', values);
-        loginApi({
-          username: values.username,
-          password: values.password
-        })
-          .then(res => {
-            if (res.code == "success") {
-              setToken(res.token);
-              props.history.push("/admin");
-            } else {
-              message.info(res.message);
-            }
-
-            // console.log(res);
-          })
-          .catch(err => {
-            // console.log(err);
-            message.error("Account No Exist");
-          })
-
+        console.log("Received values of form:", values);
+        setToken(values.username);
+        props.history.push('/admin');
       }
+      // if (!err) {
+      //   console.log('Received values of form: ', values);
+      //   loginApi({
+      //     username: values.username,
+      //     password: values.password
+      //   })
+      //     .then(res => {
+      //       if (res.code == "success") {
+      //         setToken(res.token);
+      //         props.history.push("/admin");
+      //       } else {
+      //         message.info(res.message);
+      //       }
+
+      //       // console.log(res);
+      //     })
+      //     .catch(err => {
+      //       // console.log(err);
+      //       message.error("Account No Exist");
+      //     })
+
+      // }
     });
 
   }
