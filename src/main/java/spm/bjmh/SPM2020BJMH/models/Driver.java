@@ -10,6 +10,7 @@ import javax.validation.constraints.NotNull;
 
 public class Driver extends User{
 
+   
     @NotNull(message = "Plate must not be null")
     @NotEmpty(message = "Plate must not be empty")
     private  String plate;
