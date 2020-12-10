@@ -3,6 +3,7 @@ package spm.bjmh.SPM2020BJMH.models;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import spm.bjmh.SPM2020BJMH.Constants.RegexConstants;
 import spm.bjmh.SPM2020BJMH.Enum.Roles;
 
 import javax.validation.constraints.NotEmpty;
@@ -27,10 +28,17 @@ public class User implements Serializable {
     private String lastname;
     @NotNull(message = "Email must be not null ")
     @NotEmpty(message = "Email must be not empty")
+    @Pattern(regexp=RegexConstants.EMAIL_REGEX, message="Invalid Email format")
     private String email;
+    @NotNull(message="Phone must not be null")
+    @NotEmpty(message = "Phone must not be empty")
+    @Pattern(regexp=RegexConstants.PHONE_REGEX, message="Invalid Phone format")
     private String phone;
     @NotNull(message = "Username must not be null ")
     @NotEmpty(message = "Username must not be empty")
+    @NotNull(message="Email must not be null")
+    @NotEmpty(message = "Email must not be empty")
+    @Pattern(regexp=RegexConstants.USERNAME_REGEX, message="Invalid Username format")
     private String username;
     @NotNull(message = "Password must not be null")
     @NotEmpty(message = "Password must not be empty")
@@ -55,60 +63,110 @@ public class User implements Serializable {
     /*ACCESSORY METHODS  */
 
 
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
     public String getPassword() {
         return password;
     }
-
     public void setPassword(String password) {
-        this.password = password;
+        if(password != null && password != "") {
+            this.password = password.trim();
+        }
+        else {
+            throw new IllegalArgumentException("Password is invalid");
+        }
     }
 
     public Roles getRole() {
         return role;
     }
-
     public void setRole(Roles role) {
         this.role = role;
     }
-}
 
+
+    public String getEmail() {
+        return email;
+    }
+    public void setEmail(String email) {
+        if(email != null && email != "" &&
+                email.matches(RegexConstants.EMAIL_REGEX)) {
+            this.email = email;
+        }
+        else {
+            throw new IllegalArgumentException("Email is invalid");
+        }
+    }
+
+
+    public String getUsername() {
+        return username;
+    }
+
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+
+
+    public String getPhone() {
+        return phone;
+    }
+
+
+    public void setPhone(String phone) {
+        if(phone != null && phone != "" &&
+                phone.matches(RegexConstants.PHONE_REGEX)) {
+            this.phone = phone;
+        }
+        else {
+            throw new IllegalArgumentException("Phone is invalid");
+        }
+    }
+
+
+
+
+
+    public String getLastName() {
+        return lastname;
+    }
+
+
+    public void setLastName(String lastName) {
+        if(lastName != null && lastName != "") {
+            this.lastname = lastName.trim();
+        }
+        else {
+            throw new IllegalArgumentException("Last name is invalid");
+        }
+    }
+
+
+    public String getFirstName() {
+        return firstname;
+    }
+
+
+    public void setFirstName(String firstName) {
+        if(firstName != null && firstName != "") {
+            this.firstname = firstName.trim();
+        }
+        else {
+            throw new IllegalArgumentException("First name is invalid");
+        }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+        User user = (User) o;
+        return(user.getEmail().equals(this.getEmail()) &&
+                user.getPassword().equals(this.getPassword()) &&
+                user.getRole().equals(this.getRole()));
+    }
+
+
+}
