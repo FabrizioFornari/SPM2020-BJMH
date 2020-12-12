@@ -1,7 +1,7 @@
 import { formatCountdown } from 'antd/lib/statistic/utils'
 import React, { useEffect, useState } from 'react';
 import { Card, Table, Button, Popconfirm } from 'antd';
-import {listApi } from "../../../servives/information"
+import { listApi } from "../../../servives/information"
 import renderEmpty from 'antd/lib/config-provider/renderEmpty';
 
 
@@ -31,23 +31,23 @@ const dataSource = [{
 
 function List(props) {
 
-const [dataSource, setDataSource] = useState([])
-const  [total, setTotal] = useState(0)
+    const [dataSource, setDataSource] = useState([])
+    const [total, setTotal] = useState(0)
 
-useEffect(() => {
-    listApi().then(res => {
-        console.log(res);
-        setDataSource(res.products);
-        setTotal(res.totalCount)
-    });
-}, []);
+    useEffect(() => {
+        listApi().then(res => {
+            console.log(res);
+            setDataSource(res.products);
+            setTotal(res.totalCount)
+        });
+    }, []);
 
-const loadData=page=>{
-    listApi(page).then(res => {
-        setDataSource(res.products);
-        setTotal(res.totalCount)
-    });
-}
+    const loadData = page => {
+        listApi(page).then(res => {
+            setDataSource(res.products);
+            setTotal(res.totalCount)
+        });
+    }
 
     const columns = [{
         title: 'Number',
@@ -83,7 +83,14 @@ const loadData=page=>{
         render: (txt, record, index) => {
             return (
                 <div>
-                    <Button style={{ margin: "0 1rem" }} type="primary" size="small">Edit</Button>
+                    <Button 
+                    style={{ margin: "0 1rem" }} 
+                    type="primary" 
+                    size="small" 
+                    onClick={() => {
+                        //jump to edit page, send the _id as paramter
+                        props.history.push('/admin/information/edit/${record._id}');
+                    }}>Edit</Button>
                     <Popconfirm
                         title="Do you want delete it?"
                         onCancel={() => console.log('Cancel Delete')}
@@ -100,16 +107,16 @@ const loadData=page=>{
         <Card
             title="Parking List"
             extra={
-                <Button 
-                type="primary"
-                size="small"
-                onClick={() => props.history.push("/admin/products/Edit")}
+                <Button
+                    type="primary"
+                    size="small"
+                    onClick={() => props.history.push("/admin/products/Edit")}
                 >
                     Add
                 </Button>
             }
         >
-            <Table rowKey="_id" pagination={{total,defaultPageSize:2, onChange:loadData}} columns={columns} bordered dataSource={dataSource} />
+            <Table rowKey="_id" pagination={{ total, defaultPageSize: 2, onChange: loadData }} columns={columns} bordered dataSource={dataSource} />
         </Card>
     )
 }
