@@ -1,7 +1,8 @@
 import { formatCountdown } from 'antd/lib/statistic/utils'
 import React, { useEffect, useState } from 'react';
 import { Card, Table, Button, Popconfirm } from 'antd';
-import { listApi } from "../../../servives/information"
+import { listApi, delOne, modifyOne } from "../../../servives/information"
+import "./list.css"
 import renderEmpty from 'antd/lib/config-provider/renderEmpty';
 
 
@@ -83,18 +84,23 @@ function List(props) {
         render: (txt, record, index) => {
             return (
                 <div>
-                    <Button 
-                    style={{ margin: "0 1rem" }} 
-                    type="primary" 
-                    size="small" 
-                    onClick={() => {
-                        //jump to edit page, send the _id as paramter
-                        props.history.push('/admin/information/edit/${record._id}');
-                    }}>Edit</Button>
+                    <Button
+                        style={{ margin: "0 1rem" }}
+                        type="primary"
+                        size="small"
+                        onClick={() => {
+                            //jump to edit page, send the _id as paramster
+                            props.history.push('/admin/information/edit/${record._id}');
+                        }}>Edit</Button>
                     <Popconfirm
                         title="Do you want delete it?"
                         onCancel={() => console.log('Cancel Delete')}
-                        onConfirm={() => console.log('Confirm Delete')}
+                        onConfirm={() => {
+                            delOne(record._id).then(res =>{
+                                loadData(1);
+                            });
+                        }}
+                            // console.log('Confirm Delete')}
                     // Call Api here for related operations
                     >
                         <Button style={{ margin: "0 1rem" }} type="danger" size="small">Delete</Button>
