@@ -32,12 +32,22 @@ const dataSource = [{
 function List(props) {
 
 const [dataSource, setDataSource] = useState([])
+const  [total, setTotal] = useState(0)
 
 useEffect(() => {
     listApi().then(res => {
-        console.log(res.products)
+        console.log(res);
+        setDataSource(res.products);
+        setTotal(res.totalCount)
     });
 }, []);
+
+const loadData=page=>{
+    listApi(page).then(res => {
+        setDataSource(res.products);
+        setTotal(res.totalCount)
+    });
+}
 
     const columns = [{
         title: 'Number',
@@ -99,7 +109,7 @@ useEffect(() => {
                 </Button>
             }
         >
-            <Table rowKey="_id" columns={columns} bordered dataSource={dataSource} />
+            <Table rowKey="_id" pagination={{total,defaultPageSize:2, onChange:loadData}} columns={columns} bordered dataSource={dataSource} />
         </Card>
     )
 }
