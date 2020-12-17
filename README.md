@@ -1,4 +1,4 @@
-# SPM2020-BJMH
+# SPM2020-B
 
 ## Table of contents
 1. [Introduction](#introduction)
@@ -23,9 +23,6 @@ The project is organized with the available tools of github. The [milestones](ht
 Who | Role | Email | Phone |
 ---- | ---- | ---- | --- |
 Bilel Braiek |  | <bilel.braiek@studenti.unicam.it> | +39 3342049842 |
-Miriam Petrocchi | Scrum Master| <miriam.petrocchi@studenti.unicam.it> |+39 3397084450  |
- Jerusha Josine Manchala|  | <jerushajosi.manchala@studenti.unicam.it> | |
- Haoran Sun|  | <haoran.sun@studenti.unicam.it> | +39 3778489449 |
 
 
 ### UNICAM <a name="team_unicam"/>
